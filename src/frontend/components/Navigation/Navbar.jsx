@@ -25,19 +25,19 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to='/forgot' activeClassName='active'>
+            <NavLink to='/inventory' activeClassName='active'>
               <FontAwesomeIcon className='icon' icon={faBox} />
               Inventory
             </NavLink>
           </li>
           <li>
-            <NavLink to='/register' activeClassName='active'>
+            <NavLink to='/equipment' activeClassName='active'>
               <FontAwesomeIcon className='icon' icon={faTools} />
               Equipment
             </NavLink>
           </li>
           <li>
-            <NavLink to='/register' activeClassName='active'>
+            <NavLink to='/settings' activeClassName='active'>
               <FontAwesomeIcon className='icon' icon={faGear} />
               Settings
             </NavLink>

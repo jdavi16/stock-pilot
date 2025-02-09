@@ -10,6 +10,9 @@ import Success from "./frontend/components/Login/Success";
 import Forgot from "./frontend/components/Login/Forgot";
 import Dashboard from "./frontend/components/Dashboard/Dashboard";
 import Navbar from "./frontend/components/Navigation/Navbar";
+import Inventory from "./frontend/components/Inventory/Inventory";
+import Equipment from "./frontend/components/Equipment/Equipment";
+import Settings from "./frontend/components/Settings/Settings";
 /** STYLES */
 import "./frontend/styles/main.css";
 
@@ -32,6 +35,9 @@ const AppContent = () => {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/inventory' element={<Inventory />} />
+        <Route path='/equipment' element={<Equipment />} />
+        <Route path='/settings' element={<Settings />} />
         <Route path='/register' element={<Register />} />
         <Route path='/success' element={<Success />} />
         <Route path='/forgot' element={<Forgot />} />
