@@ -10,9 +10,9 @@ const Forgot = () => {
 
   return (
     <div>
-      <h1>Forgot Password</h1>
-      <button type='button' className='button2' onClick={handleCancel}>
-        Back
+      <h1>Coming Soon!</h1>
+      <button style={{ marginTop: "20px" }} type='button' className='button2' onClick={handleCancel}>
+        Go back to Login
       </button>
     </div>
   );

@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AuthProvider, useAuth } from "./frontend/components/scripts/AuthContext";
+import { AuthProvider, useAuth } from "./frontend/scripts/AuthContext";
 
 /** COMPONENTS */
 import Header from "./frontend/components/Header/Header";
-import Login from "./frontend/components/Login";
-import Register from "./frontend/components/Register";
-import Success from "./frontend/components/Success";
-import Forgot from "./frontend/components/Forgot";
-import Dashboard from "./frontend/components/Dashboard";
+import Login from "./frontend/components/Login/Login";
+import Register from "./frontend/components/Login/Register";
+import Success from "./frontend/components/Login/Success";
+import Forgot from "./frontend/components/Login/Forgot";
+import Dashboard from "./frontend/components/Dashboard/Dashboard";
 import Navbar from "./frontend/components/Navigation/Navbar";
 /** STYLES */
 import "./frontend/styles/main.css";

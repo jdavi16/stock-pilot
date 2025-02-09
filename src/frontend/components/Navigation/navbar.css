@@ -78,3 +78,29 @@
   padding: 12px;
   color: var(--bg);
 }
+
+/* USER PROFILE */
+.user-profile {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 15px;
+  top: 0;
+  background-color: var(--form);
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-icon {
+  border: 2px solid var(--icon-fill);
+  padding: 15px;
+  color: var(--icon-fill);
+  border-radius: 50%;
+}
+
+.username {
+  margin-top: 20px;
+  color: var(--icon-fill);
+}
