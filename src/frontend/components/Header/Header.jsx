@@ -1,9 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Navbar from "./Navbar";
-import { useAuth } from "../scripts/AuthContext";
 
 const Header = () => {
-  const { isLoggedIn } = useAuth();
   const storageKey = "theme-preference";
 
   //Determine initial theme preference
@@ -60,7 +57,6 @@ const Header = () => {
 
   return (
     <header className='header'>
-      {isLoggedIn && <Navbar />}
       <button id='theme-toggle' className='theme-toggle' title='Toggles light & dark' aria-label={theme} aria-live='polite' onClick={handleToggle}>
         <svg className='sun-and-moon' aria-hidden='true' width='24' height='24' viewBox='0 0 24 24'>
           <circle className='sun' cx='12' cy='12' r='6' mask='url(#moon-mask)' fill='currentColor' />

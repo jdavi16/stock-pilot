@@ -30,9 +30,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron": "wait-on http://localhost:3000 && electron ./electron/main.js",
-    "postcss-watch": "postcss ./src/styles/main.css -o dist/main.css --watch",
+    "postcss": "postcss ./src/frontend/styles/main.css -o dist/main.css --watch",
     "express": "node ./src/backend/server.js",
-    "dev": "concurrently \"npm postcss-watch\" \"npm start\" \"npm run electron\" \"npm run express\""
+    "dev": "concurrently \"npm postcss\" \"npm start\" \"npm run electron\" \"npm run express\""
   },
   "eslintConfig": {
     "extends": [
