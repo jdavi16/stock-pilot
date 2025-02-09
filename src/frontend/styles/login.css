@@ -1,0 +1,208 @@
+/*Login Form*/
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2em;
+  background-color: var(--form);
+  border-radius: 25px;
+  transition: 0.4s ease-in-out;
+  color: var(--text);
+}
+
+.card {
+  width: 100%;
+  max-width: 330px;
+  height: 100%;
+  max-height: 420px;
+  background-image: linear-gradient(163deg, #f890e7 0%, #0bd3d3 100%);
+  border-radius: 22px;
+  transition: all 0.3s;
+}
+
+.card2 {
+  background-image: linear-gradient(163deg, #f890e7 0%, #0bd3d3 100%);
+  border-radius: 22px;
+  transition: all 0.3s;
+}
+
+.card2:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
+}
+
+#heading {
+  text-align: center;
+  margin: 1em;
+  color: var(--icon-fill);
+  font-size: 1.5em;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 25px;
+  padding: 0.4em;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: var(--light-form);
+  box-shadow: var(--field-shadow);
+}
+
+.input-icon {
+  height: 2em;
+  width: 2em;
+  fill: var(--icon-fill);
+}
+
+.input-field {
+  padding: 10px;
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: var(--icon-fill);
+  font-size: 18px;
+}
+
+.form .btn {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 2.5em;
+}
+.button1,
+.button2,
+.button3 {
+  font-size: 1em;
+}
+.button1 {
+  padding: 0.5em;
+  padding-left: 1.1em;
+  padding-right: 1, 1em;
+  border-radius: 5px;
+  margin-right: 0.5em;
+  width: 250px;
+  border: none;
+  outline: none;
+  transition: 0.4s ease-in-out;
+  background-color: var(--button);
+  color: var(--icon-fill);
+}
+
+.button1:hover {
+  background-color: var(--bg);
+  cursor: pointer;
+}
+
+.button2 {
+  padding: 0.5em;
+  padding-left: 2.3em;
+  padding-right: 2.3em;
+  border-radius: 5px;
+  width: 225px;
+  border: none;
+  outline: none;
+  transition: 0.4s ease-in-out;
+  background-color: var(--button);
+  color: var(--icon-fill);
+}
+
+.button2:hover {
+  background-color: var(--bg);
+  cursor: pointer;
+}
+
+.button3 {
+  margin-bottom: 0.9em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: 0.4s ease-in-out;
+  background-color: var(--button);
+  color: var(--icon-fill);
+}
+
+.button3:hover {
+  background-color: var(--bg);
+  cursor: pointer;
+}
+
+.button4 {
+  padding: 0.5em;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  transition: 0.4s ease-in-out;
+  background-color: var(--button);
+  color: var(--icon-fill);
+}
+
+.button4:hover {
+  background-color: var(--bg);
+  cursor: pointer;
+}
+
+.button5 {
+  padding: 0.5em;
+  font-size: 18px;
+  border: none;
+}
+
+.login-message {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-success {
+  width: 100%;
+  height: 100%;
+
+  background-image: linear-gradient(163deg, #f890e7 0%, #0bd3d3 100%);
+  border-radius: 22px;
+  transition: all 0.3s;
+}
+
+.card2-success {
+  background-image: linear-gradient(163deg, #f890e7 0%, #0bd3d3 100%);
+  border-radius: 22px;
+  transition: all 0.3s;
+}
+
+.form-success {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2em;
+  background-color: var(--form);
+  border-radius: 25px;
+  transition: 0.4s ease-in-out;
+  color: var(--text);
+  justify-content: center;
+  align-items: center;
+}
+
+#success-heading {
+  font-weight: bold;
+  background: linear-gradient(90deg, #f890e7, #0bd3d3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header {
+  background-color: var(--form);
+  width: 100%;
+}

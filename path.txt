@@ -1,0 +1,17 @@
+src/
+├── components/
+│   ├── Login.jsx
+│   ├── ThemeToggle.jsx
+│   ├── MainPage.jsx
+│   ├── SignUp.jsx
+│   └── ForgotPassword.jsx
+├── styles/
+│   ├── base.css       // Base styles for resetting and normalizing
+│   ├── layout.css     // Layout styles like flex/grid settings
+│   ├── components.css // Component-specific styles (buttons, forms, etc.)
+│   ├── themes.css     // Theme-specific styles (light, dark)
+│   └── utilities.css  // Utility classes (margin, padding, etc.)
+├── App.jsx
+├── index.css
+├── index.js
+

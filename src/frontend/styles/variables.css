@@ -1,0 +1,19 @@
+:root {
+  --bg: #ffffff;
+  --form: #e2e6e9;
+  --button: #abb3ba;
+  --icon-fill: #454d54;
+  --icon-fill-hover: #22262a;
+  --fira: "Fira Code";
+  --size: 2rem;
+  --field-shadow: inset 2px 5px 10px #abb3ba;
+}
+
+html[data-theme="dark"] {
+  --icon-fill: #abb3ba;
+  --icon-fill-hover: #e2e6e9;
+  --bg: #000000;
+  --button: #454d54;
+  --form: #22262a;
+  --field-shadow: inset 2px 5px 10px rgba(5, 5, 5);
+}
