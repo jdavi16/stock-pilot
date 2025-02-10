@@ -15,13 +15,16 @@ import Equipment from "./frontend/components/Equipment/Equipment";
 import Settings from "./frontend/components/Settings/Settings";
 /** STYLES */
 import "./frontend/styles/main.css";
+import { MantineProvider } from "@mantine/core";
 
 const App = () => {
   return (
     <AuthProvider>
-      <Router>
-        <AppContent />
-      </Router>
+      <MantineProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </MantineProvider>
     </AuthProvider>
   );
 };

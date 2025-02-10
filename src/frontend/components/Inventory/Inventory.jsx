@@ -9,7 +9,7 @@ const Inventory = () => {
   };
 
   return (
-    <div className='container' style={{ textAlign: "center", justifyContent: "center", alignItems: "center" }}>
+    <div className='container'>
       <h1>Inventory Coming Soon!</h1>
       <button style={{ marginTop: "20px" }} type='button' className='button2' onClick={handleCancel}>
         Go back
