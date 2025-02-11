@@ -6,7 +6,6 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-//import SelectContent from './SelectContent';
 import MenuContent from "./MenuContent";
 //import OptionsMenu from "./OptionsMenu";
 
@@ -23,20 +22,26 @@ const Drawer = styled(MuiDrawer)({
 });
 
 export default function Navbar() {
+  const username = localStorage.getItem("username");
+
+  const capitalizeUsername = (name) => {
+    return name.replace(/\b\w/g, (char) => char.toUpperCase());
+  };
+
   return (
-    <Drawer variant='permanent' sx={{ display: { xs: "none", md: "block" }, [`& .${drawerClasses.paper}`]: { backgroundColor: "var(--form)" } }}>
+    <Drawer variant='permanent' sx={{ borderRight: "1px solid var(--text)", display: { xs: "none", md: "block" }, [`& .${drawerClasses.paper}`]: { backgroundColor: "var(--form)" } }}>
       <Box sx={{ display: "flex", mt: "40px", p: 1.5 }}></Box>
-      <Divider sx={{ backgroundColor: "var(--button)", width: "100%" }} />
+      <Divider sx={{ backgroundColor: "var(--button-hover)", width: "100%" }} />
       <Box sx={{ display: "flex", height: "100%", flexDirection: "column" }}>
         <MenuContent />
       </Box>
-      <Stack direction='row' sx={{ p: 2, gap: 1, alignItems: "center", borderTop: "1px solid", borderColor: "var(--button)" }}>
+      <Stack direction='row' sx={{ p: 2, gap: 1, alignItems: "center", borderTop: "1px solid", borderColor: "var(--button-hover)" }}>
         <Avatar sizes='small' alt='Username' sx={{ width: 36, height: 36 }} />
         <Box sx={{ mr: "auto" }}>
-          <Typography variant='body2' sx={{ fontWeight: 500, lineHeight: "16px", color: "var(--icon-fill)" }}>
-            User
+          <Typography variant='body2' sx={{ fontWeight: 500, lineHeight: "16px", color: "var(--text)" }}>
+            Welcome {capitalizeUsername(username)}!
           </Typography>
-          <Typography variant='caption' sx={{ color: "var(--icon-fill)" }}>
+          <Typography variant='caption' sx={{ color: "var(--text)" }}>
             admin@example.com
           </Typography>
         </Box>

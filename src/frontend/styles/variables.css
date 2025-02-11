@@ -1,35 +1,28 @@
 :root {
   --fira: "Fira Code";
-  --scale: 1;
-  --spacing-xs: calc(0.625rem * var(--scale));
-  --spacing-sm: calc(0.75rem * var(--scale));
-  --spacing-md: calc(1rem * var(--scale));
-  --mantine-font-size-xs: calc(0.75rem * var(--mantine-scale));
-  --font-size-sm: calc(0.875rem * var(--mantine-scale));
-  --font-size-md: calc(1rem * var(--mantine-scale));
-  --font-size-lg: calc(1.125rem * var(--mantine-scale));
-  --font-size-xl: calc(1.25rem * var(--mantine-scale));
-  --radius-sm: calc(0.25rem * var(--mantine-scale));
-  --gray-3: #dee2e6;
-  --dark-4: #424242;
-  color-scheme: light;
+  --accent: #f890e7;
+  --accent2: #0bd3d3;
+  --accent2-hover: #02ffff;
 }
-
 html[data-theme="light"] {
   --bg: #ffffff;
   --form: #e2e6e9;
   --button: #abb3ba;
-  --icon-fill: #454d54;
-  --icon-fill-hover: #22262a;
+  --text: #454d54;
+  --text-hover: #22262a;
   --size: 2rem;
   --field-shadow: inset 2px 5px 10px #abb3ba;
+  --active: #bb86fc;
+  --border: 1px solid #333;
 }
 
 html[data-theme="dark"] {
-  --icon-fill: #abb3ba;
-  --icon-fill-hover: #e2e6e9;
+  --text: #c9c9c9;
+  --text-hover: #e2e6e9;
   --bg: #121212;
-  --button: #454d54;
-  --form: #2a2e32;
+  --button: #363636;
+  --button-hover: #424242;
+  --form: #242424;
   --field-shadow: inset 2px 5px 10px rgba(5, 5, 5);
+  --border: 1px solid #333;
 }

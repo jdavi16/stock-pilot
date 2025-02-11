@@ -5,8 +5,8 @@
   background: none;
   border: none;
   padding: 0;
-  inline-size: var(--size);
-  block-size: var(--size);
+  inline-size: 30px;
+  block-size: 30px;
   padding: 20;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -35,24 +35,24 @@
 
 .sun-and-moon > .moon,
 .sun-and-moon > .sun {
-  fill: var(--icon-fill);
+  fill: var(--text);
 }
 
 .theme-toggle:hover > .sun-and-moon > .moon,
 .theme-toggle:focus-visible > .sun-and-moon > .moon,
 .theme-toggle:hover > .sun-and-moon > .sun,
 .theme-toggle:focus-visible > .sun-and-moon > .sun {
-  fill: var(--icon-fill-hover);
+  fill: var(--text-hover);
 }
 
 .sun-and-moon > .sun-beams {
-  stroke: var(--icon-fill);
+  stroke: var(--text);
   stroke-width: 2px;
 }
 
 .theme-toggle:hover > .sun-and-moon > .sun-beams,
 .theme-toggle:focus-visible > .sun-and-moon > .sun-beams {
-  stroke: var(--icon-fill-hover);
+  stroke: var(--text-hover);
 }
 
 [data-theme="dark"] .sun-and-moon > .sun {

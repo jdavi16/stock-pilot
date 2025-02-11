@@ -61,7 +61,9 @@ const Login = () => {
       <div className='card'>
         <div className='card2'>
           <form onSubmit={handleLogin} className='form'>
-            <p id='heading'>Login</p>
+            <p className='title' id='login'>
+              Login
+            </p>
             <div className='field'>
               <FontAwesomeIcon icon={faUser} className='field-icon' />
               <input type='text' className='input-field' placeholder='Username' autoComplete='off' value={username} onChange={(e) => setUsername(e.target.value)} />

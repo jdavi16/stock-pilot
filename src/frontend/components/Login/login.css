@@ -3,43 +3,93 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-width: 350px;
   padding: 2em;
   background-color: var(--form);
   border-radius: 25px;
+  position: relative;
   transition: 0.4s ease-in-out;
   color: var(--text);
+  border: var(--border);
 }
 
-.card {
-  width: 100%;
-  max-width: 330px;
-  height: 100%;
-  max-height: 420px;
-  background-image: linear-gradient(163deg, #f890e7 0%, #0bd3d3 100%);
-  border-radius: 22px;
-  transition: all 0.3s;
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: var(--accent2);
 }
 
-.card2 {
-  background-image: linear-gradient(163deg, #f890e7 0%, #0bd3d3 100%);
-  border-radius: 22px;
-  transition: all 0.3s;
+.title::before {
+  width: 18px;
+  height: 18px;
 }
 
-.card2:hover {
-  transform: scale(0.98);
-  border-radius: 20px;
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
 }
 
-.card:hover {
-  box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: var(--accent);
 }
 
-#heading {
+#login {
+  margin-bottom: 25px;
+}
+
+.header {
   text-align: center;
-  margin: 1em;
-  color: var(--icon-fill);
-  font-size: 1.5em;
+  font-size: 14px;
+}
+
+.signin {
+  font-size: 14px;
+}
+
+.signin-btn {
+  font-size: 14px;
+  text-decoration: underline;
+  color: var(--text);
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: var(--form);
+  color: var(--accent2);
+}
+.signin-btn:hover {
+  text-decoration: underline;
+  color: var(--accent2-hover);
+}
+
+.submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 16px;
+  transform: 0.3s ease;
+  background-color: var(--button);
+  width: 100%;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: var(--button-hover);
 }
 
 .field {
@@ -52,14 +102,14 @@
   border: none;
   outline: none;
   color: white;
-  background-color: var(--light-form);
+  background-color: var(--form);
   box-shadow: var(--field-shadow);
 }
 
 .field-icon {
   height: 1.5em;
   width: 2em;
-  color: var(--icon-fill);
+  color: var(--text);
 }
 
 .show-password {
@@ -76,7 +126,7 @@
   border: none;
   outline: none;
   width: 100%;
-  color: var(--icon-fill);
+  color: var(--text);
   font-size: 18px;
 }
 
@@ -102,11 +152,11 @@
   outline: none;
   transition: 0.4s ease-in-out;
   background-color: var(--button);
-  color: var(--icon-fill);
+  color: var(--text);
 }
 
 .button1:hover {
-  background-color: var(--bg);
+  background-color: var(--button-hover);
   cursor: pointer;
 }
 
@@ -120,11 +170,11 @@
   outline: none;
   transition: 0.4s ease-in-out;
   background-color: var(--button);
-  color: var(--icon-fill);
+  color: var(--text);
 }
 
 .button2:hover {
-  background-color: var(--bg);
+  background-color: var(--button-hover);
   cursor: pointer;
 }
 
@@ -136,7 +186,7 @@
   outline: none;
   transition: 0.4s ease-in-out;
   background-color: var(--button);
-  color: var(--icon-fill);
+  color: var(--text);
 }
 
 .button3:hover {
@@ -152,11 +202,11 @@
   border-radius: 5px;
   transition: 0.4s ease-in-out;
   background-color: var(--button);
-  color: var(--icon-fill);
+  color: var(--text);
 }
 
 .button4:hover {
-  background-color: var(--bg);
+  background-color: var(--button-hover);
   cursor: pointer;
 }
 
@@ -172,21 +222,6 @@
   padding-bottom: 10px;
   justify-content: center;
   align-items: center;
-}
-
-.card-success {
-  width: 100%;
-  height: 100%;
-
-  background-image: linear-gradient(163deg, #f890e7 0%, #0bd3d3 100%);
-  border-radius: 22px;
-  transition: all 0.3s;
-}
-
-.card2-success {
-  background-image: linear-gradient(163deg, #f890e7 0%, #0bd3d3 100%);
-  border-radius: 22px;
-  transition: all 0.3s;
 }
 
 .form-success {
@@ -210,7 +245,32 @@
   background-clip: text;
 }
 
-.header {
-  background-color: var(--form);
+.name-field {
+  display: flex;
   width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input-field {
+  border-radius: 25px;
+  padding: 1em;
+  font-size: 16px;
+  background-color: var(--form);
+  box-shadow: var(--field-shadow);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
 }

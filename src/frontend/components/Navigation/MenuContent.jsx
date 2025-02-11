@@ -19,6 +19,8 @@ const secondaryListItems = [
   { text: "Logout", icon: <IconLogout />, link: "/" },
 ];
 
+
+
 export default function MenuContent() {
   const [active, setActive] = useState("Dashboard");
 
@@ -26,7 +28,13 @@ export default function MenuContent() {
     <Stack sx={{ flexGrow: 1, p: 1, justifyContent: "space-between" }}>
       <List dense>
         {mainListItems.map((item, index) => (
-          <ListItem key={index} disablePadding sx={{ display: "block", color: "var(--icon-fill)" }}>
+          <ListItem
+            key={index}
+            disablePadding
+            sx={{
+              display: "block",
+              color: "var(--text)",
+            }}>
             <ListItemButton
               key={index}
               component={NavLink}
@@ -39,16 +47,18 @@ export default function MenuContent() {
                 mt: "10px",
                 borderRadius: "5px",
                 "&:hover": {
-                  backgroundColor: "var(--button)",
+                  backgroundColor: "var(--button-hover)",
                 },
                 "&.Mui-selected": {
                   backgroundColor: "var(--button)",
+                  color: "var(--text-hover)",
                   "&:hover": {
-                    backgroundColor: "var(--button)",
+                    backgroundColor: "var(--button-hover)",
+                    color: "var(--text-hover)",
                   },
                 },
               }}>
-              <ListItemIcon sx={{ color: "var(--icon-fill)" }}>{item.icon}</ListItemIcon>
+              <ListItemIcon sx={{ color: "var(--text)" }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
@@ -56,7 +66,19 @@ export default function MenuContent() {
       </List>
       <List dense>
         {secondaryListItems.map((item, index) => (
-          <ListItem key={index} disablePadding sx={{ display: "block", color: "var(--icon-fill)" }}>
+          <ListItem
+            key={index}
+            disablePadding
+            sx={{
+              display: "block",
+              color: "var(--text)",
+              "&:hover": {
+                color: "var(--text-hover)",
+              },
+              "&.Mui-selected": {
+                color: "var(--text-hover)",
+              },
+            }}>
             <ListItemButton
               key={index}
               component={NavLink}
@@ -69,12 +91,14 @@ export default function MenuContent() {
                 mt: "10px",
                 borderRadius: "5px",
                 "&:hover": {
-                  backgroundColor: "var(--bg)",
+                  backgroundColor: "var(--button-hover)",
                 },
                 "&.Mui-selected": {
                   backgroundColor: "var(--button)",
+                  color: "var(--text-hover)",
                   "&:hover": {
                     backgroundColor: "var(--button)",
+                    color: "var(--text-hover)",
                   },
                 },
               }}>

@@ -6,10 +6,10 @@ const router = express.Router();
 
 //POST /api/register
 router.post("/register", async (req, res) => {
-  const { username, password } = req.body;
+  const { firstName, lastName, email, username, password } = req.body;
 
-  console.log("Received username: ", username);
-  console.log("Received password: ", password);
+  //console.log("Received username: ", username);
+  //console.log("Received password: ", password);
 
   try {
     //Check if user exists
@@ -24,6 +24,9 @@ router.post("/register", async (req, res) => {
 
     //Create newUser
     const newUser = new User({
+      firstName,
+      lastName,
+      email,
       username,
       password: hashedPassword,
     });
