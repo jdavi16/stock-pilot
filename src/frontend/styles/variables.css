@@ -3,17 +3,18 @@
   --accent: #f890e7;
   --accent2: #0bd3d3;
   --accent2-hover: #02ffff;
+  --field: #333;
 }
 html[data-theme="light"] {
   --bg: #ffffff;
   --form: #e2e6e9;
   --button: #abb3ba;
+  --button-hover: #c4c9ce;
   --text: #454d54;
   --text-hover: #22262a;
   --size: 2rem;
   --field-shadow: inset 2px 5px 10px #abb3ba;
-  --active: #bb86fc;
-  --border: 1px solid #333;
+  --border: 1px solid rgba(105, 105, 105, 0.397);
 }
 
 html[data-theme="dark"] {
@@ -24,5 +25,5 @@ html[data-theme="dark"] {
   --button-hover: #424242;
   --form: #242424;
   --field-shadow: inset 2px 5px 10px rgba(5, 5, 5);
-  --border: 1px solid #333;
+  --border: 1px solid rgba(105, 105, 105, 0.397);
 }

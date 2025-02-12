@@ -19,8 +19,6 @@ const secondaryListItems = [
   { text: "Logout", icon: <IconLogout />, link: "/" },
 ];
 
-
-
 export default function MenuContent() {
   const [active, setActive] = useState("Dashboard");
 

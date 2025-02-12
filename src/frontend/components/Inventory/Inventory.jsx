@@ -1,19 +1,29 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 const Inventory = () => {
-  const navigate = useNavigate();
-
-  const handleCancel = (e) => {
-    navigate("/dashboard");
-  };
-
   return (
-    <div className='container'>
-      <h1>Inventory Coming Soon!</h1>
-      <button style={{ marginTop: "20px" }} type='button' className='button2' onClick={handleCancel}>
-        Go back
-      </button>
+    <div className='inventory-container'>
+      <div className='inventory-header'>
+        <h1>Inventory</h1>
+        <button>Add Item</button>
+      </div>
+      <div className='inventory-search'>
+        <input type='text' placeholder='Search inventory' />
+        <div className='inventory-filters'>
+          <button>Filter 1</button>
+          <button>Filter 2</button>
+        </div>
+      </div>
+      <div className='inventory-table'>
+        <div className='inventory-item'>
+          <h3>Item 1</h3>
+          <p>Item description</p>
+          <div className='button-group'>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

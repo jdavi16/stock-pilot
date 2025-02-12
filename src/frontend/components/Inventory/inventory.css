@@ -1,9 +1,53 @@
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: column;
-  background-color: var(--form);
-  padding: 200px;
+.inventory-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 20px;
+  padding: 20px;
+  border: var(--border);
   width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: var(--form);
+}
+
+.inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inventory-search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.inventory-search input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+
+.inventory-filters {
+  display: flex;
+  gap: 10px;
+}
+
+.inventory-table {
+  display: flex;
+  flex-direction: column;
+  border-top: var(--border);
+}
+
+.inventory-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  flex-direction: row;
+  border-bottom: var(--border);
+  border-top: var(--border);
+  padding: 20px;
+  justify-content: space-between;
 }

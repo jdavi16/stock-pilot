@@ -92,18 +92,23 @@
   background-color: var(--button-hover);
 }
 
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
 .field {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5em;
-  border-radius: 25px;
-  padding: 0.4em;
-  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid rgba(105, 105, 105, 0.397);
   outline: none;
   color: white;
-  background-color: var(--form);
-  box-shadow: var(--field-shadow);
+  background-color: var(--field);
 }
 
 .field-icon {
@@ -121,13 +126,13 @@
 }
 
 .input-field {
-  padding: 10px;
-  background: none;
-  border: none;
-  outline: none;
+  background-color: #333;
+  color: #fff;
   width: 100%;
-  color: var(--text);
-  font-size: 18px;
+  padding: 10px;
+  outline: 0;
+  border: none;
+  font-size: 0.9em;
 }
 
 .form .btn {
@@ -245,22 +250,22 @@
   background-clip: text;
 }
 
-.name-field {
-  display: flex;
-  width: 100%;
-  gap: 6px;
-}
-
 .form label {
   position: relative;
 }
 
 .form label .input-field {
-  border-radius: 25px;
-  padding: 1em;
+  border-radius: 10px;
+  padding: 15px;
   font-size: 16px;
-  background-color: var(--form);
-  box-shadow: var(--field-shadow);
+  background-color: var(--field);
+  border: 1px solid var(--border);
+  color: #fff;
+  width: 100%;
+}
+
+#name-field {
+  border: var(--border);
 }
 
 @keyframes pulse {

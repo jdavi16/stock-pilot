@@ -38,8 +38,13 @@ const Login = () => {
       console.log("Login response:", response.data);
       if (response.data.message === "Login successful") {
         // Store token for session management
+
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("username", username);
+        localStorage.setItem("username", response.data.username);
+        localStorage.setItem("email", response.data.email);
+        localStorage.setItem("firstName", response.data.firstName);
+        localStorage.setItem("lastName", response.data.lastName);
+
         setIsLoggedIn(true);
         navigate("/dashboard");
       } else {

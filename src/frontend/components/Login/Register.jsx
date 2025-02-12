@@ -50,12 +50,12 @@ const Register = () => {
       <form className='form' onSubmit={handleRegister}>
         <p className='title'>Register</p>
         <p className='header'>Sign up now and get full access</p>
-        <div className='name-field'>
+        <div className='flex'>
           <label>
-            <input type='text' className='input-field' placeholder='First Name' autoComplete='off' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <input type='text' className='input-field' id='name-field' placeholder='First Name' autoComplete='off' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
           </label>
           <label>
-            <input type='text' className='input-field' placeholder='Last Name' autoComplete='off' value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <input type='text' className='input-field' id='name-field' placeholder='Last Name' autoComplete='off' value={lastName} onChange={(e) => setLastName(e.target.value)} />
           </label>
         </div>
         <div className='field'>
@@ -72,7 +72,6 @@ const Register = () => {
           </button>
           <input type={showPassword ? "password" : "text"} className='input-field' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
-
         <button type='submit' className='submit'>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </button>
