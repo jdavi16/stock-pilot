@@ -25,5 +25,5 @@ html[data-theme="dark"] {
   --button-hover: #424242;
   --form: #242424;
   --field-shadow: inset 2px 5px 10px rgba(5, 5, 5);
-  --border: 1px solid rgba(105, 105, 105, 0.397);
+  --border: 1px solid #69696965;
 }

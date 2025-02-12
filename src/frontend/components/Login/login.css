@@ -259,7 +259,7 @@
   padding: 15px;
   font-size: 16px;
   background-color: var(--field);
-  border: 1px solid var(--border);
+  border: var(--border);
   color: #fff;
   width: 100%;
 }

@@ -1,11 +1,12 @@
 import React from "react";
+import AddInventory from "./AddInventory";
 
 const Inventory = () => {
   return (
     <div className='inventory-container'>
       <div className='inventory-header'>
         <h1>Inventory</h1>
-        <button>Add Item</button>
+        <AddInventory />
       </div>
       <div className='inventory-search'>
         <input type='text' placeholder='Search inventory' />

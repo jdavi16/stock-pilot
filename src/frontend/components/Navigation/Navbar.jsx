@@ -31,7 +31,7 @@ export default function Navbar() {
   };
 
   return (
-    <Drawer variant='permanent' sx={{ borderRight: "1px solid", borderColor: "var(--button)", display: { xs: "none", md: "block" }, [`& .${drawerClasses.paper}`]: { backgroundColor: "var(--form)" } }}>
+    <Drawer variant='permanent' sx={{ borderRight: "1px solid", borderColor: "var(--button)", display: { xs: "none", md: "block" }, [`& .${drawerClasses.paper}`]: { backgroundColor: "var(--form)", borderRight: "1px solid", borderColor: "var(--button)" } }}>
       <Box sx={{ display: "flex", mt: "40px", p: 1.5 }}></Box>
       <Divider sx={{ backgroundColor: "var(--button)", width: "100%" }} />
       <Box sx={{ display: "flex", height: "100%", flexDirection: "column" }}>

@@ -51,3 +51,22 @@
   padding: 20px;
   justify-content: space-between;
 }
+
+/*ADD FORM*/
+.add-form-top {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.add-form-top .input-field {
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 16px;
+  background-color: var(--field);
+  border: var(--border);
+  color: #fff;
+  width: 100%;
+}
