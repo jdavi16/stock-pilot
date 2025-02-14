@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   padding-left: 30px;
-  color: var(--accent2);
+  color: var(--text);
 }
 
 .title::before {
@@ -62,34 +62,16 @@
 .signin-btn {
   font-size: 14px;
   text-decoration: underline;
-  color: var(--text);
+  color: var(--accent2);
   text-align: center;
   cursor: pointer;
   border: none;
   outline: none;
   background-color: var(--form);
-  color: var(--accent2);
 }
 .signin-btn:hover {
   text-decoration: underline;
-  color: var(--accent2-hover);
-}
-
-.submit {
-  border: none;
-  outline: none;
-  padding: 10px;
-  border-radius: 10px;
-  color: var(--text);
-  font-size: 16px;
-  transform: 0.3s ease;
-  background-color: var(--button);
-  width: 100%;
-  cursor: pointer;
-}
-
-.submit:hover {
-  background-color: var(--button-hover);
+  color: var(--accent);
 }
 
 .flex {
@@ -105,10 +87,10 @@
   gap: 0.5em;
   border-radius: 10px;
   padding: 5px;
-  border: 1px solid rgba(105, 105, 105, 0.397);
+  border: var(--border);
   outline: none;
   color: white;
-  background-color: var(--field);
+  background-color: var(--button);
 }
 
 .field-icon {
@@ -126,7 +108,7 @@
 }
 
 .input-field {
-  background-color: #333;
+  background-color: var(--button);
   color: #fff;
   width: 100%;
   padding: 10px;
@@ -135,74 +117,22 @@
   font-size: 0.9em;
 }
 
+.field:hover {
+  border: 1px solid var(--borderHover);
+}
+
 .form .btn {
   display: flex;
   justify-content: center;
   flex-direction: row;
   margin-top: 2.5em;
-}
-.button1,
-.button2,
-.button3 {
-  font-size: 1em;
-}
-.button1 {
-  padding: 0.5em;
-  padding-left: 1.1em;
-  padding-right: 1, 1em;
-  border-radius: 5px;
-  margin-right: 0.5em;
-  width: 250px;
-  border: none;
-  outline: none;
-  transition: 0.4s ease-in-out;
-  background-color: var(--button);
-  color: var(--text);
-}
-
-.button1:hover {
-  background-color: var(--button-hover);
-  cursor: pointer;
-}
-
-.button2 {
-  padding: 0.5em;
-  padding-left: 2.3em;
-  padding-right: 2.3em;
-  border-radius: 5px;
-  width: 225px;
-  border: none;
-  outline: none;
-  transition: 0.4s ease-in-out;
-  background-color: var(--button);
-  color: var(--text);
-}
-
-.button2:hover {
-  background-color: var(--button-hover);
-  cursor: pointer;
-}
-
-.button3 {
-  margin-bottom: 0.9em;
-  padding: 0.5em;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  transition: 0.4s ease-in-out;
-  background-color: var(--button);
-  color: var(--text);
-}
-
-.button3:hover {
-  background-color: var(--bg);
-  cursor: pointer;
+  gap: 10px;
 }
 
 .button4 {
   padding: 0.5em;
   font-size: 18px;
-  border: none;
+  border: var(--border);
   outline: none;
   border-radius: 5px;
   transition: 0.4s ease-in-out;
@@ -218,7 +148,6 @@
 .button5 {
   padding: 0.5em;
   font-size: 18px;
-  border: none;
 }
 
 .login-message {
@@ -258,14 +187,16 @@
   border-radius: 10px;
   padding: 15px;
   font-size: 16px;
-  background-color: var(--field);
-  border: var(--border);
-  color: #fff;
+  color: var(--text);
   width: 100%;
 }
 
 #name-field {
   border: var(--border);
+}
+
+#name-field:hover {
+  border: 1px solid var(--borderHover);
 }
 
 @keyframes pulse {

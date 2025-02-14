@@ -2,6 +2,7 @@
 @import "../components/Login/login.css";
 @import "../components/Header/header.css";
 @import "../components/Inventory/inventory.css";
+@import "../components/Inventory/drawer.css";
 * {
   box-sizing: border-box;
   margin: 0;

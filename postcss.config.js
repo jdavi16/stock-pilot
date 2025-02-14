@@ -1,6 +1,5 @@
 const postcssPresetEnv = require("postcss-preset-env");
 const postcssNesting = require("postcss-nesting");
-
 module.exports = {
   plugins: [
     postcssNesting(), // This is what allows the nesting syntax

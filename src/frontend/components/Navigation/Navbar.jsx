@@ -31,13 +31,13 @@ export default function Navbar() {
   };
 
   return (
-    <Drawer variant='permanent' sx={{ borderRight: "1px solid", borderColor: "var(--button)", display: { xs: "none", md: "block" }, [`& .${drawerClasses.paper}`]: { backgroundColor: "var(--form)", borderRight: "1px solid", borderColor: "var(--button)" } }}>
+    <Drawer variant='permanent' sx={{ borderRight: "1px solid", display: { xs: "none", md: "block" }, [`& .${drawerClasses.paper}`]: { backgroundColor: "var(--form)", borderRight: "1px solid", borderColor: "var(--borderColor)" } }}>
       <Box sx={{ display: "flex", mt: "40px", p: 1.5 }}></Box>
-      <Divider sx={{ backgroundColor: "var(--button)", width: "100%" }} />
+      <Divider sx={{ backgroundColor: "var(--borderColor)", width: "100%" }} />
       <Box sx={{ display: "flex", height: "100%", flexDirection: "column" }}>
         <MenuContent />
       </Box>
-      <Stack direction='row' sx={{ p: 2, gap: 1, alignItems: "center", borderTop: "1px solid", borderColor: "var(--button)" }}>
+      <Stack direction='row' sx={{ p: 2, gap: 1, alignItems: "center", borderTop: "1px solid", borderColor: "var(--borderColor)" }}>
         <Avatar sizes='small' alt='Username' sx={{ width: 36, height: 36 }} />
         <Box sx={{ mr: "0" }}>
           <Typography variant='body2' sx={{ fontWeight: 500, lineHeight: "16px", color: "var(--text)" }}>

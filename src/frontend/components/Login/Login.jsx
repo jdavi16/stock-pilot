@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../scripts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser, faUnlock } from "@fortawesome/free-solid-svg-icons";
+import { CustomButton } from "../CustomComponents/CustomComponents";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -80,16 +81,16 @@ const Login = () => {
               <input type={showPassword ? "password" : "text"} className='input-field' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             <div className='btn'>
-              <button type='submit' className='button1'>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </button>
-              <button type='button' className='button2' onClick={handleRegister}>
+              <CustomButton variant='contained' type='submit' fullWidth>
+                Login
+              </CustomButton>
+              <CustomButton variant='contained' type='button' fullWidth onClick={handleRegister}>
                 Sign Up
-              </button>
+              </CustomButton>
             </div>
-            <button type='button' className='button3' onClick={handleForgot}>
+            <CustomButton variant='contained' type='button' fullWidth onClick={handleForgot}>
               Forgot Password
-            </button>
+            </CustomButton>
           </form>
         </div>
       </div>

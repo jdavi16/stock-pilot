@@ -15,6 +15,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 20px;
+  border-bottom: var(--border);
 }
 
 .inventory-search {
@@ -53,20 +55,3 @@
 }
 
 /*ADD FORM*/
-.add-form-top {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-}
-
-.add-form-top .input-field {
-  border-radius: 10px;
-  padding: 15px;
-  font-size: 16px;
-  background-color: var(--field);
-  border: var(--border);
-  color: #fff;
-  width: 100%;
-}

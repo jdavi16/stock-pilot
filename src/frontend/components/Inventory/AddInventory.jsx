@@ -1,74 +1,127 @@
-import * as React from "react";
-import Drawer from "@mui/material/Drawer";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import { IconX } from "@tabler/icons-react";
-import { TextField } from "@mui/material";
+import { IconX, IconCheck } from "@tabler/icons-react";
+import { CustomTextField } from "../CustomComponents/CustomComponents";
+import { CustomButton } from "../CustomComponents/CustomComponents";
 
-export default function AddInventory() {
-  const [state, setState] = React.useState({
-    right: false,
-  });
+export default function AddInventory({ toggleDrawer }) {
+  /*const currency = [
+    { value: "eur", label: "🇪🇺 EUR" },
+    { value: "usd", label: "🇺🇸 USD" },
+    { value: "cad", label: "🇨🇦 CAD" },
+    { value: "gbp", label: "🇬🇧 GBP" },
+    { value: "aud", label: "🇦🇺 AUD" },
+  ];*/
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
-      return;
-    }
+  const categories = [
+    { value: "Filament", label: "Filament" },
+    { value: "Resin", label: "Resin" },
+    { value: "Powder", label: "Powder" },
+    { value: "Wire", label: "Wire" },
+  ];
 
-    setState({ ...state, [anchor]: open });
+  const materialOptions = {
+    Filament: [
+      { value: "ABS", label: "ABS" },
+      { value: "CPE", label: "CPE" },
+      { value: "HIPS", label: "HIPS" },
+      { value: "Nylon", label: "Nylon" },
+      { value: "PC", label: "PC" },
+      { value: "PCTG", label: "PCTG" },
+      { value: "PETG", label: "PETG" },
+      { value: "PLA", label: "PLA" },
+      { value: "PVA", label: "PVA" },
+      { value: "TPU", label: "TPU" },
+    ],
+    Resin: [
+      { value: "Standard", label: "Standard" },
+      { value: "Tough", label: "Tough" },
+      { value: "Flexible", label: "Flexible" },
+    ],
+    Powder: [
+      { value: "Nylon", label: "Nylon" },
+      { value: "Aluminum", label: "Aluminum" },
+      { value: "Steel", label: "Steel" },
+    ],
+    Wire: [
+      { value: "Copper", label: "Copper" },
+      { value: "Aluminum", label: "Aluminum" },
+      { value: "Steel", label: "Steel" },
+    ],
   };
-  const addForm = (anchor) => (
-    <Box
-      sx={{
-        width: anchor === "top" || anchor === "bottom" ? "auto" : 600,
-        padding: "20px",
-      }}
-      role='presentation'>
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", textColor: "var(--text)" }}>
-        <IconX onClick={toggleDrawer(anchor, false)} color='var(--text)' style={{ cursor: "pointer" }} />
-        <Typography variant='h6' color='var(--text)'>
-          Add Item
-        </Typography>
-      </Box>
-      <Divider sx={{ backgroundColor: "var(--button)", width: "100%", marginTop: "10px" }} />
-      <div style={{ display: "flex", flexDirection: "column", mt: "10px", padding: "20px", width: "100%" }}>
-        <div style={{ display: "flex", flexDirection: "row", gap: "10px", alignContent: "center", width: "100%" }}>
-          <label className='add-form-top'>
-            <input type='text' className='input-field' name='itemName' placeholder='Item Name' />
-          </label>
-          <label className='add-form-top'>
-            <input type='text' className='input-field' name='quantity' placeholder='Quantity on Hand' />
-          </label>
-        </div>
-        <div className='drawer-btns'>
-          <button type='submit'>Add</button>
-          <button type='button' onClick={toggleDrawer(anchor, false)}>
-            Cancel
-          </button>
-        </div>
-      </div>
-    </Box>
-  );
+
+  const [selectedCategory, setSelectedCategory] = useState("Filament");
+  const [materialType, setMaterialType] = useState(materialOptions["Filament"]);
+
+  const handleCategoryChange = (event) => {
+    const category = event.target.value;
+    setSelectedCategory(category);
+    setMaterialType(materialOptions[category]);
+  };
+
   return (
     <div>
-      {["right"].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <button onClick={toggleDrawer(anchor, true)}>Add Item</button>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-            ModalProps={{
-              BackdropProps: {
-                onClick: (event) => event.stopPropagation(),
-              },
-            }}
-            sx={{ [`& .MuiDrawer-paper`]: { width: 600, backgroundColor: "var(--form)" } }}>
-            {addForm(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+      <React.Fragment>
+        <Box
+          sx={{
+            width: 600,
+            padding: "20px",
+          }}
+          role='presentation'>
+          <Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", textColor: "var(--text)" }}>
+            <IconX onClick={toggleDrawer("right", false)} color='var(--text)' style={{ cursor: "pointer", marginRight: "10px" }} />
+            <h2 style={{ color: "var(--text)" }}>Add Item</h2>
+            <CustomButton variant='contained' startIcon={<IconCheck />} sx={{ marginLeft: "auto" }}>
+              Confirm
+            </CustomButton>
+          </Box>
+          <Divider sx={{ backgroundColor: "var(--borderColor)", width: "100%", marginTop: "10px" }} />
+          <div className='form-section'>
+            <h3>General Information</h3>
+            <div className='drawer-row'>
+              <label className='drawer-field'>
+                <CustomTextField size='small' fullWidth id='outlined-basic' label='Item Name' />
+              </label>
+              <label className='drawer-field'>
+                <CustomTextField size='small' fullWidth id='outlined-basic' label='Brand' />
+              </label>
+            </div>
+            <div className='drawer-row'>
+              <label className='drawer-field'>
+                <select type='text' className='drawer-input' name='category' value={selectedCategory} onChange={handleCategoryChange}>
+                  {categories.map((category) => (
+                    <option key={category.value} value={category.value}>
+                      {category.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className='drawer-field'>
+                <select type='text' className='drawer-input' name='materialtype'>
+                  {materialType.map((type) => (
+                    <option key={type.value} value={type.value}>
+                      {type.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </div>
+          <Divider sx={{ backgroundColor: "var(--borderColor)", width: "100%", marginTop: "10px" }} />
+          <div className='form-section'>
+            <h3>Weight Information</h3>
+            <div className='drawer-row'>
+              <label className='drawer-field'>
+                <CustomTextField size='small' fullWidth id='outlined-basic' label='Weight' />
+              </label>
+              <label className='drawer-field'>
+                <CustomTextField size='small' fullWidth id='outlined-basic' label='Price' />
+              </label>
+            </div>
+          </div>
+        </Box>
+      </React.Fragment>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { faLock, faEnvelope, faUnlock, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CustomButton, CustomTextField } from "../CustomComponents/CustomComponents";
 
 const Register = () => {
   const [username, setUsername] = React.useState("");
@@ -52,10 +53,10 @@ const Register = () => {
         <p className='header'>Sign up now and get full access</p>
         <div className='flex'>
           <label>
-            <input type='text' className='input-field' id='name-field' placeholder='First Name' autoComplete='off' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <CustomTextField type='text' id='outlined-basic' placeholder='First Name' autoComplete='off' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
           </label>
           <label>
-            <input type='text' className='input-field' id='name-field' placeholder='Last Name' autoComplete='off' value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <CustomTextField type='text' placeholder='Last Name' value={lastName} onChange={(e) => setLastName(e.target.value)} />
           </label>
         </div>
         <div className='field'>
@@ -72,9 +73,9 @@ const Register = () => {
           </button>
           <input type={showPassword ? "password" : "text"} className='input-field' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <button type='submit' className='submit'>
+        <CustomButton variant='contained' type='submit' fullWidth>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </button>
+        </CustomButton>
         <p className='signin'>
           Already have an account?
           <button className='signin-btn' onClick={handleCancel}>

@@ -48,8 +48,9 @@ export default function MenuContent() {
                   backgroundColor: "var(--button-hover)",
                 },
                 "&.Mui-selected": {
-                  backgroundColor: "var(--button)",
+                  backgroundColor: "var(--button-hover)",
                   color: "var(--text-hover)",
+                  outline: "1px solid var(--borderHover)",
                   "&:hover": {
                     backgroundColor: "var(--button-hover)",
                     color: "var(--text-hover)",
@@ -100,7 +101,7 @@ export default function MenuContent() {
                   },
                 },
               }}>
-              <ListItemIcon sx={{ color: "var(--icon-fill)" }}>{item.icon}</ListItemIcon>
+              <ListItemIcon sx={{ color: "var(--text)" }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
