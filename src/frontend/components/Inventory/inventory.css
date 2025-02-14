@@ -11,29 +11,34 @@
   background-color: var(--form);
 }
 
-.inventory-header {
+.inventory-header-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: row;
   padding-bottom: 20px;
   border-bottom: var(--border);
+  justify-content: space-between;
+}
+
+.inventory-header-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+
+.inventory-header-container h1 {
+  margin-right: 20px;
 }
 
 .inventory-search {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 10px;
 }
 
-.inventory-search input {
-  flex-grow: 1;
-  padding: 10px;
-  border: 1px solid var(--border);
-  border-radius: 5px;
-}
-
 .inventory-filters {
+  padding: 0;
   display: flex;
   gap: 10px;
 }

@@ -1,8 +1,9 @@
 import React from "react";
 import AddInventory from "./AddInventory";
 import Drawer from "@mui/material/Drawer";
-import { CustomButton } from "../CustomComponents/CustomComponents";
-import { IconPlus, IconTrash, IconPencil } from "@tabler/icons-react";
+import InputAdornment from "@mui/material/InputAdornment";
+import { CustomButton, CustomTextField } from "../CustomComponents/CustomComponents";
+import { IconPlus, IconTrash, IconPencil, IconSearch } from "@tabler/icons-react";
 
 const Inventory = () => {
   const [state, setState] = React.useState({
@@ -16,6 +17,7 @@ const Inventory = () => {
 
     setState({ ...state, [anchor]: open });
   };
+
   return (
     <div className='inventory-container'>
       <Drawer
@@ -30,18 +32,33 @@ const Inventory = () => {
         sx={{ [`& .MuiDrawer-paper`]: { width: 600, backgroundColor: "var(--form)", borderLeft: "1px solid", borderColor: "var(--borderColor)" } }}>
         <AddInventory toggleDrawer={toggleDrawer} />
       </Drawer>
-      <div className='inventory-header'>
-        <h1>Inventory</h1>
-        <CustomButton variant='contained' startIcon={<IconPlus />} onClick={toggleDrawer("right", true)}>
-          Add Item
-        </CustomButton>
-      </div>
-      <div className='inventory-search'>
-        <input type='text' placeholder='Search inventory' />
-        <div className='inventory-filters'>
-          <button>Filter 1</button>
-          <button>Filter 2</button>
+      <div className='inventory-header-container'>
+        <div className='inventory-header-left'>
+          <h1>Inventory</h1>
+          <CustomButton variant='contained' startIcon={<IconPlus />} onClick={toggleDrawer("right", true)} className='add-item-button'>
+            Add Item
+          </CustomButton>
         </div>
+        <div className='inventory-search-container'>
+          <CustomTextField
+            type='text'
+            placeholder='Search Inventory'
+            sx={{ width: "300px" }}
+            slotProps={{
+              input: {
+                endAdornment: (
+                  <InputAdornment position='end' sx={{ color: "var(--text)" }}>
+                    <IconSearch />
+                  </InputAdornment>
+                ),
+              },
+            }}
+          />
+        </div>
+      </div>
+      <div className='inventory-filters'>
+        <CustomButton>Filter 1</CustomButton>
+        <CustomButton>Filter 2</CustomButton>
       </div>
       <div className='inventory-table'>
         <div className='inventory-item'>

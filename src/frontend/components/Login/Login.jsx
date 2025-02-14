@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../scripts/AuthContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock, faUser, faUnlock } from "@fortawesome/free-solid-svg-icons";
-import { CustomButton } from "../CustomComponents/CustomComponents";
+import { CustomButton, CustomTextField } from "../CustomComponents/CustomComponents";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import { IconLock, IconLockOpen2 } from "@tabler/icons-react";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -70,16 +71,27 @@ const Login = () => {
             <p className='title' id='login'>
               Login
             </p>
-            <div className='field'>
-              <FontAwesomeIcon icon={faUser} className='field-icon' />
-              <input type='text' className='input-field' placeholder='Username' autoComplete='off' value={username} onChange={(e) => setUsername(e.target.value)} />
-            </div>
-            <div className='field'>
-              <button type='button' className='show-password' onClick={() => setShowPassword(!showPassword)} tabIndex={-1}>
-                <FontAwesomeIcon icon={showPassword ? faLock : faUnlock} className='field-icon' />
-              </button>
-              <input type={showPassword ? "password" : "text"} className='input-field' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
-            </div>
+            <CustomTextField type='text' required className='input-field' placeholder='Username*' autoComplete='off' value={username} onChange={(e) => setUsername(e.target.value)} />
+            <CustomTextField
+              type={showPassword ? "password" : "text"}
+              id='outlined-adornment-password'
+              placeholder='Password*'
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              slotProps={{
+                input: {
+                  endAdornment: (
+                    <InputAdornment position='end'>
+                      <IconButton aria-label='toggle password visibility' sx={{ color: "var(--text)" }} edge='end' onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <IconLock /> : <IconLockOpen2 />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                },
+              }}
+            />
+
             <div className='btn'>
               <CustomButton variant='contained' type='submit' fullWidth>
                 Login

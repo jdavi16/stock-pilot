@@ -81,10 +81,10 @@ export default function AddInventory({ toggleDrawer }) {
             <h3>General Information</h3>
             <div className='drawer-row'>
               <label className='drawer-field'>
-                <CustomTextField size='small' fullWidth id='outlined-basic' label='Item Name' />
+                <CustomTextField size='small' fullWidth id='outlined-basic' placeholder='Item Name' />
               </label>
               <label className='drawer-field'>
-                <CustomTextField size='small' fullWidth id='outlined-basic' label='Brand' />
+                <CustomTextField size='small' fullWidth id='outlined-basic' placeholder='Brand' />
               </label>
             </div>
             <div className='drawer-row'>
@@ -113,10 +113,10 @@ export default function AddInventory({ toggleDrawer }) {
             <h3>Weight Information</h3>
             <div className='drawer-row'>
               <label className='drawer-field'>
-                <CustomTextField size='small' fullWidth id='outlined-basic' label='Weight' />
+                <CustomTextField size='small' fullWidth id='outlined-basic' placeholder='Weight' />
               </label>
               <label className='drawer-field'>
-                <CustomTextField size='small' fullWidth id='outlined-basic' label='Price' />
+                <CustomTextField size='small' fullWidth id='outlined-basic' placeholder='Price' />
               </label>
             </div>
           </div>

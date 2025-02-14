@@ -15,7 +15,7 @@ const mainListItems = [
 ];
 
 const secondaryListItems = [
-  { text: "Settings", icon: <IconSettings />, link: "/" },
+  { text: "Settings", icon: <IconSettings />, link: "/settings" },
   { text: "Logout", icon: <IconLogout />, link: "/" },
 ];
 
@@ -45,14 +45,14 @@ export default function MenuContent() {
                 mt: "10px",
                 borderRadius: "5px",
                 "&:hover": {
-                  backgroundColor: "var(--button-hover)",
+                  backgroundColor: "var(--accent)",
                 },
                 "&.Mui-selected": {
-                  backgroundColor: "var(--button-hover)",
+                  backgroundColor: "var(--accent2)",
                   color: "var(--text-hover)",
-                  outline: "1px solid var(--borderHover)",
+                  outline: "1px solid var(--accent)",
                   "&:hover": {
-                    backgroundColor: "var(--button-hover)",
+                    backgroundColor: "var(--accent)",
                     color: "var(--text-hover)",
                   },
                 },
@@ -90,13 +90,13 @@ export default function MenuContent() {
                 mt: "10px",
                 borderRadius: "5px",
                 "&:hover": {
-                  backgroundColor: "var(--button-hover)",
+                  backgroundColor: "var(--accent)",
                 },
                 "&.Mui-selected": {
-                  backgroundColor: "var(--button)",
+                  backgroundColor: "var(--accent2)",
                   color: "var(--text-hover)",
                   "&:hover": {
-                    backgroundColor: "var(--button)",
+                    backgroundColor: "var(--accent)",
                     color: "var(--text-hover)",
                   },
                 },

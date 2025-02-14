@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { faLock, faEnvelope, faUnlock, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CustomButton, CustomTextField } from "../CustomComponents/CustomComponents";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import { IconLock, IconLockOpen2 } from "@tabler/icons-react";
 
 const Register = () => {
   const [username, setUsername] = React.useState("");
@@ -53,26 +56,33 @@ const Register = () => {
         <p className='header'>Sign up now and get full access</p>
         <div className='flex'>
           <label>
-            <CustomTextField type='text' id='outlined-basic' placeholder='First Name' autoComplete='off' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <CustomTextField required type='text' id='outlined-basic' placeholder='First Name*' autoComplete='off' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
           </label>
           <label>
-            <CustomTextField type='text' placeholder='Last Name' value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <CustomTextField required type='text' placeholder='Last Name*' value={lastName} onChange={(e) => setLastName(e.target.value)} />
           </label>
         </div>
-        <div className='field'>
-          <FontAwesomeIcon icon={faEnvelope} className='field-icon' />
-          <input type='text' className='input-field' placeholder='Email' autoComplete='off' value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div className='field'>
-          <FontAwesomeIcon icon={faUser} className='field-icon' />
-          <input type='text' className='input-field' placeholder='Username' autoComplete='off' value={username} onChange={(e) => setUsername(e.target.value)} />
-        </div>
-        <div className='field'>
-          <button type='button' className='show-password' onClick={() => setShowPassword(!showPassword)} tabIndex={-1}>
-            <FontAwesomeIcon icon={showPassword ? faLock : faUnlock} className='field-icon' />
-          </button>
-          <input type={showPassword ? "password" : "text"} className='input-field' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
+        <CustomTextField required type='text' className='input-field' placeholder='Email*' autoComplete='off' value={email} onChange={(e) => setEmail(e.target.value)} />
+        <CustomTextField required type='text' className='input-field' placeholder='Username*' autoComplete='off' value={username} onChange={(e) => setUsername(e.target.value)} />
+        <CustomTextField
+          type={showPassword ? "password" : "text"}
+          id='outlined-adornment-password'
+          placeholder='Password*'
+          value={password}
+          required
+          onChange={(e) => setPassword(e.target.value)}
+          slotProps={{
+            input: {
+              endAdornment: (
+                <InputAdornment position='end'>
+                  <IconButton aria-label='toggle password visibility' sx={{ color: "var(--text)" }} edge='end' onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? <IconLock /> : <IconLockOpen2 />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            },
+          }}
+        />
         <CustomButton variant='contained' type='submit' fullWidth>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </CustomButton>
