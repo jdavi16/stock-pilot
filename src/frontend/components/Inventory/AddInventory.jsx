@@ -1,18 +1,45 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
-import { IconX, IconCheck } from "@tabler/icons-react";
-import { CustomTextField } from "../CustomComponents/CustomComponents";
-import { CustomButton } from "../CustomComponents/CustomComponents";
+import { IconCheck } from "@tabler/icons-react";
+import { Button, CloseButton, Grid, TextInput, NativeSelect } from "@mantine/core";
+import classes from "./inventory.module.css";
+import axios from "axios";
 
 export default function AddInventory({ toggleDrawer }) {
-  /*const currency = [
-    { value: "eur", label: "🇪🇺 EUR" },
-    { value: "usd", label: "🇺🇸 USD" },
-    { value: "cad", label: "🇨🇦 CAD" },
-    { value: "gbp", label: "🇬🇧 GBP" },
-    { value: "aud", label: "🇦🇺 AUD" },
-  ];*/
+  const [formValue, setFormValues] = useState({
+    brand: "",
+    color: "",
+    category: "",
+    materialType: "",
+    weight: "",
+    price: "",
+    weightUnit: "",
+    currencyUnit: "",
+    onHand: "",
+    costPer: "",
+    maxTemp: "",
+    minTemp: "",
+    maxBedTemp: "",
+    minBedTemp: "",
+  });
+
+  const [focusedFields, setFocusedFields] = useState({
+    brand: false,
+    color: false,
+    price: false,
+    weight: false,
+  });
+
+  const handleFocus = (field) => {
+    setFocusedFields({ ...focusedFields, [field]: true });
+  };
+
+  const handleBlur = (field) => {
+    setFocusedFields({ ...focusedFields, [field]: false });
+  };
+
+  const floating = (field) => focusedFields[field] || (formValue[field] && formValue[field].length > 0) || undefined;
 
   const categories = [
     { value: "Filament", label: "Filament" },
@@ -51,14 +78,104 @@ export default function AddInventory({ toggleDrawer }) {
     ],
   };
 
-  const [selectedCategory, setSelectedCategory] = useState("Filament");
-  const [materialType, setMaterialType] = useState(materialOptions["Filament"]);
+  const CurrencyData = [
+    { value: "usd", label: "🇺🇸 USD" },
+    { value: "cad", label: "🇨🇦 CAD" },
+    { value: "eur", label: "🇪🇺 EUR" },
+    { value: "gbp", label: "🇬🇧 GBP" },
+    { value: "aud", label: "🇦🇺 AUD" },
+  ];
+
+  const WeightData = [
+    { value: "g", label: "g" },
+    { value: "kg", label: "kg" },
+  ];
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues({ ...formValue, [name]: value });
+    console.log("Form Values:", { ...formValue, [name]: value });
+  };
 
   const handleCategoryChange = (event) => {
     const category = event.target.value;
-    setSelectedCategory(category);
-    setMaterialType(materialOptions[category]);
+    setFormValues({ ...formValue, category: category, materialType: "" });
   };
+
+  const handleSubmit = () => {
+    axios
+      .post("http://localhost:5000/api/inventory", formValue)
+      .then((response) => {
+        setFormValues({
+          brand: "",
+          color: "",
+          category: "",
+          materialType: "",
+          weight: "",
+          price: "",
+          weightUnit: "",
+          currencyUnit: "",
+          onHand: "",
+          costPer: "",
+          maxTemp: "",
+          minTemp: "",
+          maxBedTemp: "",
+          minBedTemp: "",
+        });
+      })
+      .catch((error) => {
+        console.error("There was an error adding the inventory item!", error);
+      });
+    toggleDrawer("right", false);
+  };
+
+  const CurrencySelect = (
+    <NativeSelect
+      data={CurrencyData}
+      rightSectionWidth={28}
+      styles={{
+        input: {
+          fontWeight: 500,
+          borderTopLeftRadius: 0,
+          borderBottomLeftRadius: 0,
+          width: 92,
+          border: "none",
+          marginRight: "1px",
+          backgroundColor: "var(--form)",
+          color: "var(--text)",
+          borderLeft: "1px solid var(--borderColor)",
+        },
+      }}
+      value={formValue.currencyUnit}
+      onChange={handleInputChange}
+      name='currencyUnit'
+      defaultValue='usd'
+    />
+  );
+
+  const WeightSelect = (
+    <NativeSelect
+      data={WeightData}
+      rightSectionWidth={28}
+      styles={{
+        input: {
+          fontWeight: 500,
+          borderTopLeftRadius: 0,
+          borderBottomLeftRadius: 0,
+          width: 92,
+          border: "none",
+          marginRight: "1px",
+          backgroundColor: "var(--form)",
+          color: "var(--text)",
+          borderLeft: "1px solid var(--borderColor)",
+        },
+      }}
+      value={formValue.weightUnit}
+      onChange={handleInputChange}
+      name='weightUnit'
+      defaultValue='g'
+    />
+  );
 
   return (
     <div>
@@ -70,55 +187,86 @@ export default function AddInventory({ toggleDrawer }) {
           }}
           role='presentation'>
           <Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", textColor: "var(--text)" }}>
-            <IconX onClick={toggleDrawer("right", false)} color='var(--text)' style={{ cursor: "pointer", marginRight: "10px" }} />
+            <CloseButton size='xl' variant='transparent' onClick={toggleDrawer("right", false)} color='var(--text)' style={{ cursor: "pointer", marginRight: "10px" }} />
             <h2 style={{ color: "var(--text)" }}>Add Item</h2>
-            <CustomButton variant='contained' startIcon={<IconCheck />} sx={{ marginLeft: "auto" }}>
+            <Button autoContrast variant='filled' color='var(--accent)' size='md' radius='md' leftSection={<IconCheck />} style={{ marginLeft: "auto" }} type='submit' onClick={handleSubmit}>
               Confirm
-            </CustomButton>
+            </Button>
           </Box>
           <Divider sx={{ backgroundColor: "var(--borderColor)", width: "100%", marginTop: "10px" }} />
           <div className='form-section'>
             <h3>General Information</h3>
-            <div className='drawer-row'>
-              <label className='drawer-field'>
-                <CustomTextField size='small' fullWidth id='outlined-basic' placeholder='Item Name' />
-              </label>
-              <label className='drawer-field'>
-                <CustomTextField size='small' fullWidth id='outlined-basic' placeholder='Brand' />
-              </label>
-            </div>
-            <div className='drawer-row'>
-              <label className='drawer-field'>
-                <select type='text' className='drawer-input' name='category' value={selectedCategory} onChange={handleCategoryChange}>
-                  {categories.map((category) => (
-                    <option key={category.value} value={category.value}>
-                      {category.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className='drawer-field'>
-                <select type='text' className='drawer-input' name='materialtype'>
-                  {materialType.map((type) => (
-                    <option key={type.value} value={type.value}>
-                      {type.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
+            <Grid gutter='lg'>
+              <Grid.Col span={6}>
+                <TextInput
+                  classNames={{
+                    root: classes.root,
+                    input: classes.input,
+                    label: classes.label,
+                  }}
+                  label='Brand'
+                  size='md'
+                  name='brand'
+                  type='text'
+                  labelProps={{ "data-floating": floating("brand") }}
+                  value={formValue.brand}
+                  onFocus={() => handleFocus("brand")}
+                  onBlur={() => handleBlur("brand")}
+                  onChange={handleInputChange}
+                />
+                <NativeSelect size='md' classNames={{ root: classes.root, input: classes.select }} fullWidth name='category' data={categories} value={formValue.category} onChange={handleCategoryChange} />
+              </Grid.Col>
+              <Grid.Col span={6}>
+                <TextInput classNames={{ root: classes.root, input: classes.input, label: classes.label }} label='Color' labelProps={{ "data-floating": floating("color") }} size='md' name='color' value={formValue.color} onFocus={() => handleFocus("color")} onBlur={() => handleBlur("color")} onChange={handleInputChange} />
+                <NativeSelect size='md' classNames={{ root: classes.root, input: classes.select }} data={materialOptions[formValue.category]} fullWidth type='text' name='materialType' value={formValue.materialType} onChange={handleInputChange} />
+              </Grid.Col>
+            </Grid>
           </div>
           <Divider sx={{ backgroundColor: "var(--borderColor)", width: "100%", marginTop: "10px" }} />
           <div className='form-section'>
             <h3>Weight Information</h3>
-            <div className='drawer-row'>
-              <label className='drawer-field'>
-                <CustomTextField size='small' fullWidth id='outlined-basic' placeholder='Weight' />
-              </label>
-              <label className='drawer-field'>
-                <CustomTextField size='small' fullWidth id='outlined-basic' placeholder='Price' />
-              </label>
-            </div>
+            <Grid gutter='xs'>
+              <Grid.Col span={6}>
+                <TextInput
+                  classNames={{
+                    input: classes.input,
+                    root: classes.root,
+                    label: classes.label,
+                  }}
+                  labelProps={{ "data-floating": floating("weight") }}
+                  type='number'
+                  label='Net Weight'
+                  rightSection={WeightSelect}
+                  rightSectionWidth={92}
+                  size='md'
+                  onFocus={() => handleFocus("weight")}
+                  onBlur={() => handleBlur("weight")}
+                  onChange={handleInputChange}
+                  value={formValue.weight}
+                  name='weight'
+                />
+              </Grid.Col>
+              <Grid.Col span={6}>
+                <TextInput
+                  classNames={{
+                    input: classes.input,
+                    root: classes.root,
+                    label: classes.label,
+                  }}
+                  labelProps={{ "data-floating": floating("price") }}
+                  type='number'
+                  label='Price'
+                  rightSection={CurrencySelect}
+                  rightSectionWidth={92}
+                  size='md'
+                  onFocus={() => handleFocus("price")}
+                  onBlur={() => handleBlur("price")}
+                  onChange={handleInputChange}
+                  value={formValue.price}
+                  name='price'
+                />
+              </Grid.Col>
+            </Grid>
           </div>
         </Box>
       </React.Fragment>

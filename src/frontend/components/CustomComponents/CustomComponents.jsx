@@ -1,4 +1,3 @@
-import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 
@@ -24,14 +23,5 @@ export const CustomTextField = styled(TextField)({
     "&.Mui-focused fieldset": {
       borderColor: "var(--accent)",
     },
-  },
-});
-
-export const CustomButton = styled(Button)({
-  backgroundColor: "var(--accent)",
-  fontSize: "14px",
-  color: "var(--text)",
-  "&:hover": {
-    backgroundColor: "var(--accent-hover)",
   },
 });

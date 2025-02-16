@@ -13,15 +13,6 @@
   margin-right: 0;
 }
 
-.drawer-input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid var(--borderColor);
-  background-color: var(--button);
-  color: var(--text);
-}
-
 .drawer-input::placeholder {
   color: var(--text);
 }

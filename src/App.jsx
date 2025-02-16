@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./frontend/scripts/AuthContext";
+import "@mantine/core/styles.css";
 
 /** COMPONENTS */
 import Header from "./frontend/components/Header/Header";

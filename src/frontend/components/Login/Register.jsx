@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CustomButton, CustomTextField } from "../CustomComponents/CustomComponents";
+import { CustomTextField } from "../CustomComponents/CustomComponents";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import { IconLock, IconLockOpen2 } from "@tabler/icons-react";
+import { Button } from "@mantine/core";
 
 const Register = () => {
   const [username, setUsername] = React.useState("");
@@ -83,9 +82,9 @@ const Register = () => {
             },
           }}
         />
-        <CustomButton variant='contained' type='submit' fullWidth>
+        <Button variant='filled' color='var(--accent)' type='submit' fullWidth autoContrast>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </CustomButton>
+        </Button>
         <p className='signin'>
           Already have an account?
           <button className='signin-btn' onClick={handleCancel}>

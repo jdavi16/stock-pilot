@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../scripts/AuthContext";
-import { CustomButton, CustomTextField } from "../CustomComponents/CustomComponents";
+import { CustomTextField } from "../CustomComponents/CustomComponents";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import { IconLock, IconLockOpen2 } from "@tabler/icons-react";
+import { Button } from "@mantine/core";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -93,16 +94,16 @@ const Login = () => {
             />
 
             <div className='btn'>
-              <CustomButton variant='contained' type='submit' fullWidth>
+              <Button variant='filled' color='var(--accent)' type='submit' fullWidth>
                 Login
-              </CustomButton>
-              <CustomButton variant='contained' type='button' fullWidth onClick={handleRegister}>
+              </Button>
+              <Button variant='filled' color='var(--accent)' type='button' fullWidth onClick={handleRegister}>
                 Sign Up
-              </CustomButton>
+              </Button>
             </div>
-            <CustomButton variant='contained' type='button' fullWidth onClick={handleForgot}>
+            <Button variant='filled' type='button' color='var(--accent)' fullWidth onClick={handleForgot}>
               Forgot Password
-            </CustomButton>
+            </Button>
           </form>
         </div>
       </div>

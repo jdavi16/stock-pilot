@@ -1,5 +1,6 @@
 const postcssPresetEnv = require("postcss-preset-env");
 const postcssNesting = require("postcss-nesting");
+
 module.exports = {
   plugins: [
     postcssNesting(), // This is what allows the nesting syntax
@@ -16,6 +17,16 @@ module.exports = {
         "color-functional-notation": false,
         "nesting-rules": true,
         "is-pseudo-class": true,
+      },
+      "postcss-preset-mantine": {},
+      "postcss-simple-vars": {
+        variables: {
+          "mantine-breakpoint-xs": "36em",
+          "mantine-breakpoint-sm": "48em",
+          "mantine-breakpoint-md": "62em",
+          "mantine-breakpoint-lg": "75em",
+          "mantine-breakpoint-xl": "88em",
+        },
       },
     }),
   ],

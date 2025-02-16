@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
+const inventoryRoutes = require("./routes/inventoryRoute");
 
 dotenv.config();
 
@@ -29,10 +30,11 @@ mongoose
 
 //Auth Routes
 app.use("/api", authRoutes);
+app.use("/api", inventoryRoutes);
 
 //Fallback route
 app.all("*", (req, res) => {
-  res.status(404).send(`Cannot ${req.method} ${res.path}`);
+  res.status(404).send(`Cannot ${req.method} ${req.path}`);
 });
 
 // Start server

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import AddInventory from "./AddInventory";
 import Drawer from "@mui/material/Drawer";
 import InputAdornment from "@mui/material/InputAdornment";
-import { CustomButton, CustomTextField } from "../CustomComponents/CustomComponents";
-import { IconPlus, IconTrash, IconPencil, IconSearch } from "@tabler/icons-react";
+import { CustomTextField } from "../CustomComponents/CustomComponents";
+import { IconPlus, IconSearch } from "@tabler/icons-react";
+import { Button } from "@mantine/core";
+import { InventoryTable } from "./InventoryTable";
 
 const Inventory = () => {
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     right: false,
   });
 
@@ -35,9 +37,9 @@ const Inventory = () => {
       <div className='inventory-header-container'>
         <div className='inventory-header-left'>
           <h1>Inventory</h1>
-          <CustomButton variant='contained' startIcon={<IconPlus />} onClick={toggleDrawer("right", true)} className='add-item-button'>
+          <Button variant='filled' leftSection={<IconPlus />} color='var(--accent)' onClick={toggleDrawer("right", true)}>
             Add Item
-          </CustomButton>
+          </Button>
         </div>
         <div className='inventory-search-container'>
           <CustomTextField
@@ -57,21 +59,16 @@ const Inventory = () => {
         </div>
       </div>
       <div className='inventory-filters'>
-        <CustomButton>Filter 1</CustomButton>
-        <CustomButton>Filter 2</CustomButton>
+        <Button variant='filled' color='var(--accent)'>
+          Filter 1
+        </Button>
+        <Button variant='filled' color='var(--accent)'>
+          Filter 2
+        </Button>
       </div>
       <div className='inventory-table'>
         <div className='inventory-item'>
-          <h3>Item 1</h3>
-          <p>Item description</p>
-          <div className='button-group'>
-            <CustomButton variant='contained' onClick={toggleDrawer("right", true)}>
-              {<IconPencil />}
-            </CustomButton>
-            <CustomButton variant='contained' sx={{ marginLeft: "5px" }}>
-              {<IconTrash />}
-            </CustomButton>
-          </div>
+          <InventoryTable />
         </div>
       </div>
     </div>

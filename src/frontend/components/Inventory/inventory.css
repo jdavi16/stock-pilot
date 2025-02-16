@@ -24,6 +24,7 @@
   flex-direction: row;
   justify-content: flex-start;
   flex-grow: 1;
+  align-items: center;
 }
 
 .inventory-header-container h1 {
@@ -43,20 +44,3 @@
   gap: 10px;
 }
 
-.inventory-table {
-  display: flex;
-  flex-direction: column;
-  border-top: var(--border);
-}
-
-.inventory-item {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  flex-direction: row;
-  border-bottom: var(--border);
-  border-top: var(--border);
-  padding: 20px;
-  justify-content: space-between;
-}
-
-/*ADD FORM*/
