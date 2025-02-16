@@ -4,30 +4,30 @@ import { AuthProvider } from "./frontend/scripts/AuthContext";
 import "@mantine/core/styles.css";
 
 /** COMPONENTS */
-import Header from "./frontend/components/Header/Header";
-import Login from "./frontend/components/Login/Login";
-import Register from "./frontend/components/Login/Register";
-import Success from "./frontend/components/Login/Success";
-import Forgot from "./frontend/components/Login/Forgot";
-import MainLayout from "./frontend/components/MainLayout";
-import Dashboard from "./frontend/components/Dashboard/Dashboard";
+import Header from "./frontend/components/Header/Header.jsx";
+import Login from "./frontend/components/Login/Login.jsx";
+import Register from "./frontend/components/Login/Register.jsx";
+import Success from "./frontend/components/Login/Success.jsx";
+import Forgot from "./frontend/components/Login/Forgot.jsx";
+import MainLayout from "./frontend/components/MainLayout.jsx";
+import Dashboard from "./frontend/components/Dashboard/Dashboard.jsx";
 //import Navbar from "./frontend/components/Navigation/Navbar";
-import Inventory from "./frontend/components/Inventory/Inventory";
-import Equipment from "./frontend/components/Equipment/Equipment";
-import Settings from "./frontend/components/Settings/Settings";
+import Inventory from "./frontend/components/Inventory/Inventory.jsx";
+import Equipment from "./frontend/components/Equipment/Equipment.jsx";
+import Settings from "./frontend/components/Settings/Settings.jsx";
 /** STYLES */
 import "./frontend/styles/main.css";
 import { MantineProvider } from "@mantine/core";
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <AuthProvider>
-      <MantineProvider>
+    <MantineProvider>
+      <AuthProvider>
         <Router>
           <AppContent />
         </Router>
-      </MantineProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </MantineProvider>
   );
 };
 
