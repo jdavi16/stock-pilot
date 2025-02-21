@@ -3,6 +3,9 @@
 @import "../components/Header/header.css";
 @import "../components/Inventory/inventory.css";
 @import "../components/Inventory/drawer.css";
+@import "../components/Dashboard/dashboard.module.css";
+@import "../components/Login/success.module.css";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -31,5 +34,7 @@ body {
   margin: 0;
   font-family: var(--fira);
   font-size: 16px;
-  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+  transition:
+    background-color 0.4s ease-in-out,
+    color 0.4s ease-in-out;
 }

@@ -158,6 +158,14 @@
   align-items: center;
 }
 
+#success-message {
+  color: green;
+}
+
+#error-message {
+  color: red;
+}
+
 .form-success {
   display: flex;
   flex-direction: column;

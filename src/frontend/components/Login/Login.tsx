@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../scripts/AuthContext";
@@ -8,12 +8,12 @@ import IconButton from "@mui/material/IconButton";
 import { IconLock, IconLockOpen2 } from "@tabler/icons-react";
 import { Button } from "@mantine/core";
 
-const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(true);
+const Login: React.FC = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [showPassword, setShowPassword] = useState<boolean>(true);
   const { setIsLoggedIn } = useAuth();
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ const Login = () => {
     navigate("/forgot");
   };
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -53,7 +53,7 @@ const Login = () => {
       } else {
         setError("There was a problem logging in");
       }
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Error during login:", err);
       setError("Invalid username or password");
     }
@@ -72,14 +72,14 @@ const Login = () => {
             <p className='title' id='login'>
               Login
             </p>
-            <CustomTextField type='text' required className='input-field' placeholder='Username*' autoComplete='off' value={username} onChange={(e) => setUsername(e.target.value)} />
+            <CustomTextField type='text' required className='input-field' placeholder='Username*' autoComplete='off' value={username} onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)} />
             <CustomTextField
               type={showPassword ? "password" : "text"}
               id='outlined-adornment-password'
               placeholder='Password*'
               required
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
               slotProps={{
                 input: {
                   endAdornment: (

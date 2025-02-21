@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Forgot = () => {
+const Forgot: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleCancel = (e) => {
+  const handleCancel = () => {
     navigate("/");
   };
 

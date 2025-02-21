@@ -11,14 +11,6 @@ const Equipment: React.FC = () => {
   return (
     <div className="container">
       <h1>Equipment Coming Soon!</h1>
-      <button
-        style={{ marginTop: "20px" }}
-        type="button"
-        className="button2"
-        onClick={handleCancel}
-      >
-        Go back
-      </button>
     </div>
   );
 };

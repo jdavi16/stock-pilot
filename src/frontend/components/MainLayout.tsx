@@ -6,11 +6,11 @@ import "./MainLayout.css";
 
 const MainLayout: React.FC = () => {
   return (
-    <div className="main-layout">
+    <div className='main-layout'>
       <Header />
-      <div className="main-content">
+      <div className='main-content'>
         <Navbar />
-        <div className="content">
+        <div className='content'>
           <Outlet />
         </div>
       </div>

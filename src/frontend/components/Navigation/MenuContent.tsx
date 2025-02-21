@@ -8,19 +8,25 @@ import ListItemText from "@mui/material/ListItemText";
 import Stack from "@mui/material/Stack";
 import { IconDeviceIpadHorizontal, IconDashboard, IconBuildingWarehouse, IconSettings, IconLogout } from "@tabler/icons-react";
 
-const mainListItems = [
+interface ListItemProps {
+  text: string;
+  icon: React.ReactNode;
+  link: string;
+}
+
+const mainListItems: ListItemProps[] = [
   { text: "Dashboard", icon: <IconDashboard />, link: "/dashboard" },
   { text: "Inventory", icon: <IconBuildingWarehouse />, link: "/inventory" },
   { text: "Equipment", icon: <IconDeviceIpadHorizontal />, link: "/equipment" },
 ];
 
-const secondaryListItems = [
+const secondaryListItems: ListItemProps[] = [
   { text: "Settings", icon: <IconSettings />, link: "/settings" },
   { text: "Logout", icon: <IconLogout />, link: "/" },
 ];
 
 export default function MenuContent() {
-  const [active, setActive] = useState("Dashboard");
+  const [active, setActive] = useState<string>("Dashboard");
 
   return (
     <Stack sx={{ flexGrow: 1, p: 1, justifyContent: "space-between" }}>
@@ -37,7 +43,6 @@ export default function MenuContent() {
               key={index}
               component={NavLink}
               to={item.link}
-              selected={item.text === active || ""}
               onClick={() => {
                 setActive(item.text);
               }}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { CustomTextField } from "../CustomComponents/CustomComponents";
@@ -7,17 +7,17 @@ import IconButton from "@mui/material/IconButton";
 import { IconLock, IconLockOpen2 } from "@tabler/icons-react";
 import { Button } from "@mantine/core";
 
-const Register = () => {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [firstName, setFirstName] = React.useState("");
-  const [lastName, setLastName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [showPassword, setShowPassword] = useState(true);
-  const [errorMessage, setErrorMessage] = React.useState("");
-  const [successMessage, setSuccessMessage] = React.useState("");
+const Register: React.FC = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [showPassword, setShowPassword] = useState<boolean>(true);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [successMessage, setSuccessMessage] = useState<string>("");
   const navigate = useNavigate();
-  const handleRegister = async (e) => {
+  const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -32,20 +32,23 @@ const Register = () => {
       setErrorMessage("");
 
       navigate("/success");
-    } catch (err) {
-      setErrorMessage(err.response ? err.response.data.message : "Error registering");
-      setSuccessMessage("");
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err) && err.response) {
+        setErrorMessage(err.response.data.message);
+      } else {
+        setErrorMessage("Error with Registration");
+      }
     }
   };
 
-  const handleCancel = (e) => {
+  const handleCancel = () => {
     navigate("/");
   };
 
   return (
     <div>
       {errorMessage && (
-        <p className='login-message' style={{ color: "red" }}>
+        <p className='login-message' id='error-message'>
           {errorMessage}
         </p>
       )}
@@ -55,21 +58,21 @@ const Register = () => {
         <p className='header'>Sign up now and get full access</p>
         <div className='flex'>
           <label>
-            <CustomTextField required type='text' id='outlined-basic' placeholder='First Name*' autoComplete='off' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <CustomTextField required type='text' id='outlined-basic' placeholder='First Name*' autoComplete='off' value={firstName} onChange={(e: ChangeEvent<HTMLInputElement>) => setFirstName(e.target.value)} />
           </label>
           <label>
-            <CustomTextField required type='text' placeholder='Last Name*' value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <CustomTextField required type='text' placeholder='Last Name*' value={lastName} onChange={(e: ChangeEvent<HTMLInputElement>) => setLastName(e.target.value)} />
           </label>
         </div>
-        <CustomTextField required type='text' className='input-field' placeholder='Email*' autoComplete='off' value={email} onChange={(e) => setEmail(e.target.value)} />
-        <CustomTextField required type='text' className='input-field' placeholder='Username*' autoComplete='off' value={username} onChange={(e) => setUsername(e.target.value)} />
+        <CustomTextField required type='text' className='input-field' placeholder='Email*' autoComplete='off' value={email} onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
+        <CustomTextField required type='text' className='input-field' placeholder='Username*' autoComplete='off' value={username} onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)} />
         <CustomTextField
           type={showPassword ? "password" : "text"}
           id='outlined-adornment-password'
           placeholder='Password*'
           value={password}
           required
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           slotProps={{
             input: {
               endAdornment: (
@@ -87,14 +90,14 @@ const Register = () => {
         </Button>
         <p className='signin'>
           Already have an account?
-          <button className='signin-btn' onClick={handleCancel}>
+          <button type='button' className='signin-btn' onClick={handleCancel}>
             Sign In
           </button>
         </p>
       </form>
 
       {successMessage && (
-        <p className='login-message' style={{ color: "green" }}>
+        <p className='login-message' id='success-message'>
           {successMessage}
         </p>
       )}

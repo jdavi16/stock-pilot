@@ -22,11 +22,11 @@ const Drawer = styled(MuiDrawer)({
 });
 
 export default function Navbar() {
-  const email = localStorage.getItem("email");
-  const firstName = localStorage.getItem("firstName");
-  const lastName = localStorage.getItem("lastName");
+  const email = localStorage.getItem("email") || "";
+  const firstName = localStorage.getItem("firstName") || "";
+  const lastName = localStorage.getItem("lastName") || "";
 
-  const capitalizeName = (name) => {
+  const capitalizeName = (name: string): string => {
     return name.replace(/\b\w/g, (char) => char.toUpperCase());
   };
 

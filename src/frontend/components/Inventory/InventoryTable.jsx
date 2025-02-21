@@ -9,8 +9,8 @@ function Th({ children, reverseSortDirection, sorted, onSort }) {
   return (
     <Table.Th className={classes.th}>
       <UnstyledButton onClick={onSort} className={classes.control}>
-        <Group justify='spacebetween'>
-          <Text fw={500} fz='sm'>
+        <Group justify="spacebetween">
+          <Text fw={500} fz="sm">
             {children}
           </Text>
           <Center className={classes.icon}>
@@ -89,10 +89,10 @@ export const InventoryTable = () => {
       <Table.Td>{row.weight}</Table.Td>
       <Table.Td>{row.price}</Table.Td>
       <Table.Td>{row.onHand}</Table.Td>
-      <Button variant='filled' color='var(--accent)' size='xs' style={{ marginRight: "5px", marginTop: "5px" }}>
+      <Button variant="filled" color="var(--accent)" size="xs" style={{ marginRight: "5px", marginTop: "5px" }}>
         {<IconPencil />}
       </Button>
-      <Button variant='filled' size='xs' color='var(--accent)' style={{ marginLeft: "5px", marginTop: "5px" }}>
+      <Button variant="filled" size="xs" color="var(--accent)" style={{ marginLeft: "5px", marginTop: "5px" }}>
         {<IconTrash />}
       </Button>
     </Table.Tr>
@@ -100,7 +100,7 @@ export const InventoryTable = () => {
 
   if (!data || data.length === 0) {
     return (
-      <Text ta='center' fz='lg'>
+      <Text ta="center" fz="lg">
         No data to display
       </Text>
     );
@@ -108,8 +108,14 @@ export const InventoryTable = () => {
 
   return (
     <ScrollArea>
-      <TextInput placeholder='Search by any field' mb='md' leftSection={<IconSearch size={16} stroke={1.5} />} value={search} onChange={handleSearchChange} />
-      <Table horizontalSpacing='md' verticalSpacing='xs' miw={700} layout='fixed'>
+      <TextInput
+        placeholder="Search by any field"
+        mb="md"
+        leftSection={<IconSearch size={16} stroke={1.5} />}
+        value={search}
+        onChange={handleSearchChange}
+      />
+      <Table horizontalSpacing="md" verticalSpacing="xs" miw={700} layout="fixed">
         <Table.Tbody>
           <Table.Tr>
             <Th sorted={sortBy === "brand"} reveresed={reverseSortDirection} onSort={() => setSorting("brand")}>
@@ -124,7 +130,11 @@ export const InventoryTable = () => {
             <Th sorted={sortBy === "category"} reveresed={reverseSortDirection} onSort={() => setSorting("category")}>
               Category
             </Th>
-            <Th sorted={sortBy === "materialType"} reveresed={reverseSortDirection} onSort={() => setSorting("materialType")}>
+            <Th
+              sorted={sortBy === "materialType"}
+              reveresed={reverseSortDirection}
+              onSort={() => setSorting("materialType")}
+            >
               Material Type
             </Th>
             <Th sorted={sortBy === "weight"} reveresed={reverseSortDirection} onSort={() => setSorting("weight")}>
@@ -144,7 +154,7 @@ export const InventoryTable = () => {
           ) : (
             <Table.Tr>
               <Table.Td colSpan={Object.keys(data[0]).length}>
-                <Text fw={500} ta='center'>
+                <Text fw={500} ta="center">
                   Nothing found
                 </Text>
               </Table.Td>
