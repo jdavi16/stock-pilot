@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, MouseEvent, KeyboardEvent } from "react";
 import AddInventory from "./AddInventory";
 import Drawer from "@mui/material/Drawer";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -7,13 +7,17 @@ import { IconPlus, IconSearch } from "@tabler/icons-react";
 import { Button } from "@mantine/core";
 import { InventoryTable } from "./InventoryTable";
 
-const Inventory = () => {
-  const [state, setState] = useState({
+interface DrawerState {
+  right: boolean;
+}
+
+const Inventory: React.FC = () => {
+  const [state, setState] = useState<DrawerState>({
     right: false,
   });
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
+  const toggleDrawer = (anchor: keyof DrawerState, open:boolean) => (event: MouseEvent | KeyboardEvent) => {
+    if (event.type === "keydown" && ((event as KeyboardEvent).key === "Tab" || (event as KeyboardEvent).key === "Shift")) {
       return;
     }
 

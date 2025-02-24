@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import { IconCheck } from "@tabler/icons-react";
@@ -6,8 +6,36 @@ import { Button, CloseButton, Grid, TextInput, NativeSelect } from "@mantine/cor
 import classes from "./inventory.module.css";
 import axios from "axios";
 
-export default function AddInventory({ toggleDrawer }) {
-  const [formValue, setFormValues] = useState({
+interface AddInventoryProps {
+  toggleDrawer: (anchor: "right", open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => void;
+}
+
+interface FormValues {
+  brand: string;
+  color: string;
+  category: string;
+  materialType: string;
+  weight: string;
+  price: string;
+  weightUnit: string;
+  currencyUnit: string;
+  onHand: string;
+  costPer: string;
+  maxTemp: string;
+  minTemp: string;
+  maxBedTemp: string;
+  minBedTemp: string;
+}
+
+interface FocusedFields {
+  brand: boolean;
+  color: boolean;
+  price: boolean;
+  weight: boolean;
+}
+
+const AddInventory: React.FC<AddInventoryProps> = ({ toggleDrawer }) => {
+  const [formValue, setFormValues] = useState<FormValues>({
     brand: "",
     color: "",
     category: "",
@@ -24,22 +52,22 @@ export default function AddInventory({ toggleDrawer }) {
     minBedTemp: "",
   });
 
-  const [focusedFields, setFocusedFields] = useState({
+  const [focusedFields, setFocusedFields] = useState<FocusedFields>({
     brand: false,
     color: false,
     price: false,
     weight: false,
   });
 
-  const handleFocus = (field) => {
+  const handleFocus = (field: keyof FocusedFields) => {
     setFocusedFields({ ...focusedFields, [field]: true });
   };
 
-  const handleBlur = (field) => {
+  const handleBlur = (field: keyof FocusedFields) => {
     setFocusedFields({ ...focusedFields, [field]: false });
   };
 
-  const floating = (field) => focusedFields[field] || (formValue[field] && formValue[field].length > 0) || undefined;
+  const floating = (field: keyof FormValues) => focusedFields[field as keyof FocusedFields] || (formValue[field] && formValue[field].length > 0) || undefined;
 
   const categories = [
     { value: "Filament", label: "Filament" },
@@ -48,7 +76,7 @@ export default function AddInventory({ toggleDrawer }) {
     { value: "Wire", label: "Wire" },
   ];
 
-  const materialOptions = {
+  const materialOptions: { [key: string]: { value: string; label: string }[] } = {
     Filament: [
       { value: "ABS", label: "ABS" },
       { value: "CPE", label: "CPE" },
@@ -91,13 +119,13 @@ export default function AddInventory({ toggleDrawer }) {
     { value: "kg", label: "kg" },
   ];
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
     setFormValues({ ...formValue, [name]: value });
     console.log("Form Values:", { ...formValue, [name]: value });
   };
 
-  const handleCategoryChange = (event) => {
+  const handleCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const category = event.target.value;
     setFormValues({ ...formValue, category: category, materialType: "" });
   };
@@ -272,4 +300,6 @@ export default function AddInventory({ toggleDrawer }) {
       </React.Fragment>
     </div>
   );
-}
+};
+
+export default AddInventory;
