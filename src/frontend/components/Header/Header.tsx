@@ -2,23 +2,22 @@ import React, { useCallback, useEffect, useState } from "react";
 //import { IconMoon, IconSun } from "@tabler/icons-react";
 //import {ActionIcon} from '@mantine/core';
 
+const storageKey = "theme-preference";
 
-const Header = () => {
-  const storageKey = "theme-preference";
+const getThemePreference = (): string => {
+  const storedPreference = localStorage.getItem(storageKey);
+  if (storedPreference) {
+    return storedPreference;
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+};
 
-  //Determine initial theme preference
-  const getThemePreference = () => {
-    if (localStorage.getItem(storageKey)) {
-      return localStorage.getItem(storageKey);
-    }
-    return window.matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light";
-  };
-
+const Header: React.FC = () => {
   //State to manage the theme
   const [theme, setTheme] = useState(getThemePreference());
 
   //Reflect the theme preference in the DOM
-  const reflectPreference = useCallback((newTheme) => {
+  const reflectPreference = useCallback((newTheme: string) => {
     document.documentElement.setAttribute("data-theme", newTheme);
     const toggleButton = document.querySelector("#theme-toggle");
     if (toggleButton) {
@@ -28,7 +27,7 @@ const Header = () => {
 
   // Set theme preference in localStorage and update DOM
   const setPreference = useCallback(
-    (newTheme) => {
+    (newTheme: string) => {
       localStorage.setItem(storageKey, newTheme);
       reflectPreference(newTheme);
     },
@@ -44,7 +43,7 @@ const Header = () => {
   //Sync with system changes
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme:dark)");
-    const handleChange = ({ matches }) => {
+    const handleChange = ({ matches }: MediaQueryListEvent) => {
       const newTheme = matches ? "dark" : "light";
       setTheme(newTheme);
       setPreference(newTheme);

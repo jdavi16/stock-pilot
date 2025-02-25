@@ -15,5 +15,8 @@ export default defineConfig(async () => {
     server: {
       port: 3000,
     },
+    define: {
+      "process.env": process.env,
+    },
   };
 });

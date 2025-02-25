@@ -150,6 +150,7 @@ const AddInventory: React.FC<AddInventoryProps> = ({ toggleDrawer }) => {
           maxBedTemp: "",
           minBedTemp: "",
         });
+        console.log("response:", response);
       })
       .catch((error) => {
         console.error("There was an error adding the inventory item!", error);
@@ -242,11 +243,11 @@ const AddInventory: React.FC<AddInventoryProps> = ({ toggleDrawer }) => {
                   onBlur={() => handleBlur("brand")}
                   onChange={handleInputChange}
                 />
-                <NativeSelect size='md' classNames={{ root: classes.root, input: classes.select }} fullWidth name='category' data={categories} value={formValue.category} onChange={handleCategoryChange} />
+                <NativeSelect size='md' classNames={{ root: classes.root, input: classes.select }} name='category' data={categories} value={formValue.category} onChange={handleCategoryChange} />
               </Grid.Col>
               <Grid.Col span={6}>
                 <TextInput classNames={{ root: classes.root, input: classes.input, label: classes.label }} label='Color' labelProps={{ "data-floating": floating("color") }} size='md' name='color' value={formValue.color} onFocus={() => handleFocus("color")} onBlur={() => handleBlur("color")} onChange={handleInputChange} />
-                <NativeSelect size='md' classNames={{ root: classes.root, input: classes.select }} data={materialOptions[formValue.category]} fullWidth type='text' name='materialType' value={formValue.materialType} onChange={handleInputChange} />
+                <NativeSelect size='md' classNames={{ root: classes.root, input: classes.select }} data={materialOptions[formValue.category]} name='materialType' value={formValue.materialType} onChange={handleInputChange} />
               </Grid.Col>
             </Grid>
           </div>

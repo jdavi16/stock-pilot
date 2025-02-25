@@ -1,6 +1,23 @@
-const mongoose = require("mongoose");
+import mongoose, { Document, Schema, Model } from "mongoose";
 
-const InventorySchema = new mongoose.Schema({
+interface IInventory extends Document {
+  brand: string;
+  color: string;
+  category: string;
+  materialType: string;
+  weight?: string;
+  weightUnit?: string;
+  price?: string;
+  currencyUnit?: string;
+  onHand?: number;
+  costPer?: string;
+  maxTemp?: number;
+  minTemp?: number;
+  maxBedTemp?: number;
+  minBedTemp?: number;
+}
+
+const InventorySchema: Schema<IInventory> = new Schema({
   brand: {
     type: String,
     required: true,
@@ -73,4 +90,6 @@ const InventorySchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Inventory", InventorySchema);
+const Inventory: Model<IInventory> = mongoose.model<IInventory>("Inventory", InventorySchema);
+
+export default Inventory;

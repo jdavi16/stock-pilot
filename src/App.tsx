@@ -4,17 +4,17 @@ import { AuthProvider } from "./frontend/scripts/AuthContext";
 import "@mantine/core/styles.css";
 
 /** COMPONENTS */
-import Header from "./frontend/components/Header/Header.jsx";
-import Login from "./frontend/components/Login/Login.jsx";
-import Register from "./frontend/components/Login/Register.jsx";
-import Success from "./frontend/components/Login/Success.jsx";
-import Forgot from "./frontend/components/Login/Forgot.jsx";
-import MainLayout from "./frontend/components/MainLayout.jsx";
-import Dashboard from "./frontend/components/Dashboard/Dashboard.jsx";
+import Header from "./frontend/components/Header/Header.tsx";
+import Login from "./frontend/components/Login/Login.tsx";
+import Register from "./frontend/components/Login/Register.tsx";
+import Success from "./frontend/components/Login/Success.tsx";
+import Forgot from "./frontend/components/Login/Forgot.tsx";
+import MainLayout from "./frontend/components/MainLayout.tsx";
+import Dashboard from "./frontend/components/Dashboard/Dashboard.tsx";
 //import Navbar from "./frontend/components/Navigation/Navbar";
-import Inventory from "./frontend/components/Inventory/Inventory.jsx";
-import Equipment from "./frontend/components/Equipment/Equipment.jsx";
-import Settings from "./frontend/components/Settings/Settings.jsx";
+import Inventory from "./frontend/components/Inventory/Inventory.tsx";
+import Equipment from "./frontend/components/Equipment/Equipment.tsx";
+import Settings from "./frontend/components/Settings/Settings.tsx";
 /** STYLES */
 import "./frontend/styles/main.css";
 import { MantineProvider } from "@mantine/core";

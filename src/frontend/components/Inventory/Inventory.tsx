@@ -2,9 +2,8 @@ import React, { useState, MouseEvent, KeyboardEvent } from "react";
 import AddInventory from "./AddInventory";
 import Drawer from "@mui/material/Drawer";
 import InputAdornment from "@mui/material/InputAdornment";
-import { CustomTextField } from "../CustomComponents/CustomComponents";
 import { IconPlus, IconSearch } from "@tabler/icons-react";
-import { Button } from "@mantine/core";
+import { Button, TextInput } from "@mantine/core";
 import { InventoryTable } from "./InventoryTable";
 
 interface DrawerState {
@@ -16,7 +15,7 @@ const Inventory: React.FC = () => {
     right: false,
   });
 
-  const toggleDrawer = (anchor: keyof DrawerState, open:boolean) => (event: MouseEvent | KeyboardEvent) => {
+  const toggleDrawer = (anchor: keyof DrawerState, open: boolean) => (event: MouseEvent | KeyboardEvent) => {
     if (event.type === "keydown" && ((event as KeyboardEvent).key === "Tab" || (event as KeyboardEvent).key === "Shift")) {
       return;
     }
@@ -46,20 +45,7 @@ const Inventory: React.FC = () => {
           </Button>
         </div>
         <div className='inventory-search-container'>
-          <CustomTextField
-            type='text'
-            placeholder='Search Inventory'
-            sx={{ width: "300px" }}
-            slotProps={{
-              input: {
-                endAdornment: (
-                  <InputAdornment position='end' sx={{ color: "var(--text)" }}>
-                    <IconSearch />
-                  </InputAdornment>
-                ),
-              },
-            }}
-          />
+          <TextInput type='text' placeholder='Search Inventory' />
         </div>
       </div>
       <div className='inventory-filters'>

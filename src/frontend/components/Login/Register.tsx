@@ -1,11 +1,10 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { CustomTextField } from "../CustomComponents/CustomComponents";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import { IconLock, IconLockOpen2 } from "@tabler/icons-react";
-import { Button } from "@mantine/core";
+import { Button, TextInput } from "@mantine/core";
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -58,33 +57,15 @@ const Register: React.FC = () => {
         <p className='header'>Sign up now and get full access</p>
         <div className='flex'>
           <label>
-            <CustomTextField required type='text' id='outlined-basic' placeholder='First Name*' autoComplete='off' value={firstName} onChange={(e: ChangeEvent<HTMLInputElement>) => setFirstName(e.target.value)} />
+            <TextInput required type='text' id='outlined-basic' placeholder='First Name*' autoComplete='off' value={firstName} onChange={(e: ChangeEvent<HTMLInputElement>) => setFirstName(e.target.value)} />
           </label>
           <label>
-            <CustomTextField required type='text' placeholder='Last Name*' value={lastName} onChange={(e: ChangeEvent<HTMLInputElement>) => setLastName(e.target.value)} />
+            <TextInput required type='text' placeholder='Last Name*' value={lastName} onChange={(e: ChangeEvent<HTMLInputElement>) => setLastName(e.target.value)} />
           </label>
         </div>
-        <CustomTextField required type='text' className='input-field' placeholder='Email*' autoComplete='off' value={email} onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
-        <CustomTextField required type='text' className='input-field' placeholder='Username*' autoComplete='off' value={username} onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)} />
-        <CustomTextField
-          type={showPassword ? "password" : "text"}
-          id='outlined-adornment-password'
-          placeholder='Password*'
-          value={password}
-          required
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-          slotProps={{
-            input: {
-              endAdornment: (
-                <InputAdornment position='end'>
-                  <IconButton aria-label='toggle password visibility' sx={{ color: "var(--text)" }} edge='end' onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? <IconLock /> : <IconLockOpen2 />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            },
-          }}
-        />
+        <TextInput required type='text' className='input-field' placeholder='Email*' autoComplete='off' value={email} onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
+        <TextInput required type='text' className='input-field' placeholder='Username*' autoComplete='off' value={username} onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)} />
+        <TextInput type={showPassword ? "password" : "text"} id='outlined-adornment-password' placeholder='Password*' value={password} required onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
         <Button variant='filled' color='var(--accent)' type='submit' fullWidth autoContrast>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </Button>

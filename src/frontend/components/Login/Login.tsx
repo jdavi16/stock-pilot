@@ -2,11 +2,10 @@ import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../scripts/AuthContext";
-import { CustomTextField } from "../CustomComponents/CustomComponents";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import { IconLock, IconLockOpen2 } from "@tabler/icons-react";
-import { Button } from "@mantine/core";
+import { Button, TextInput } from "@mantine/core";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -72,26 +71,8 @@ const Login: React.FC = () => {
             <p className='title' id='login'>
               Login
             </p>
-            <CustomTextField type='text' required className='input-field' placeholder='Username*' autoComplete='off' value={username} onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)} />
-            <CustomTextField
-              type={showPassword ? "password" : "text"}
-              id='outlined-adornment-password'
-              placeholder='Password*'
-              required
-              value={password}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-              slotProps={{
-                input: {
-                  endAdornment: (
-                    <InputAdornment position='end'>
-                      <IconButton aria-label='toggle password visibility' sx={{ color: "var(--text)" }} edge='end' onClick={() => setShowPassword(!showPassword)}>
-                        {showPassword ? <IconLock /> : <IconLockOpen2 />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                },
-              }}
-            />
+            <TextInput type='text' required className='input-field' placeholder='Username*' autoComplete='off' value={username} onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)} />
+            <TextInput type={showPassword ? "password" : "text"} id='outlined-adornment-password' placeholder='Password*' required value={password} onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
 
             <div className='btn'>
               <Button variant='filled' color='var(--accent)' type='submit' fullWidth>
