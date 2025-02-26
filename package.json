@@ -9,6 +9,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@mantine/core": "^7.16.3",
+    "@mantine/form": "^7.17.0",
     "@mantine/hooks": "^7.16.3",
     "@mui/icons-material": "^6.4.3",
     "@mui/material": "^6.4.3",
@@ -43,7 +44,7 @@
     "build": "vite build && tsc -p tsconfig-electron.json && cross-env PREVIEW= electron.",
     "postcss": "postcss ./src/frontend/styles/main.css -o dist/main.css --watch",
     "express": "ts-node ./src/backend/server.ts",
-    "dev": "concurrently \"tsc && vite\" \"yarn express \" \"wait-on http://localhost:3000 && cross-env DEV= tsc-watch -p tsconfig-electron.json --onSuccess \\\"electron .\\\"\"",
+    "dev": "concurrently \"tsc && vite\" \"yarn express \" \"yarn postcss\" \"wait-on http://localhost:3000 && cross-env DEV= tsc-watch -p tsconfig-electron.json --onSuccess \\\"electron .\\\"\"",
     "preview": "vite preview"
   },
   "eslintConfig": {

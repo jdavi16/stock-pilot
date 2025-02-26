@@ -1,0 +1,34 @@
+.paper {
+  border-color: var(--borderColor);
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  color: var(--text);
+}
+
+.anchor {
+  color: var(--accent2);
+}
+
+.checkbox {
+  background-color: var(--bg);
+  border-color: var(--borderColor);
+  cursor: pointer;
+}
+
+.icon {
+  color: var(--bg);
+}
+.input {
+  background-color: var(--bg);
+  border-color: var(--borderColor);
+  color: var(--text);
+  &:hover {
+    border-color: var(--accent2);
+  }
+  &:focus-within {
+    border-color: var(--accent);
+  }
+}

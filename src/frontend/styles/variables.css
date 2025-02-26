@@ -1,5 +1,4 @@
 :root {
-  --fira: "Fira Code";
   --accent-hover: oklch(55.66% 0.2369 277.02);
   --accent: oklch(46.09% 0.2369 277.02);
   --accent2: oklch(62.32% 0.2545 277.02);
@@ -10,26 +9,28 @@ html[data-theme="light"] {
   --form: canvas;
   --button: oklch(98.42% 0.0034 247.86);
   --button-hover: oklch(12% 9.5% 264 / 5%);
+  --icon-fill: oklch(12% 5% 264 / 90%);
+  --icon-fill-hover: oklch(33.68% 0.02 264);
   --text: oklch(12% 5% 264 / 90%);
   --text-hover: oklch(33.68% 0.02 264);
   --size: 2rem;
-  --shadow: 2px 5px 10px #abb3ba;
   --border: 1px solid oklch(12% 9% 264 / 8%);
   --borderColor: oklch(12% 9% 264 / 8%);
 }
 
 html[data-theme="dark"] {
-  --text: oklch(95% 2% 264 / 85%);
+  --text: #ffffff;
   --text-hover: oklch(95% 2% 264 / 100%);
-  --bg: #121212;
+  --icon-fill: oklch(95% 2% 264 / 85%);
+  --icon-fill-hover: oklch(95% 2% 264 / 100%);
+  --bg: #202020;
   --button: oklch(17% 1% 264);
   --button-hover: oklch(28% 3% 264 / 65%);
   --form: canvas;
-  --shadow: 2px 5px 10px rgba(5, 5, 5);
   --border: 1px solid oklch(31% 3% 264 / 80%);
   --field: #333;
   --color-blue: oklch(69% 50% 264);
   --color-red: oklch(80% 55% 31);
-  --borderColor: oklch(31% 3% 264 / 80%);
+  --borderColor: #424242;
   --borderHover: oklch(38.68% 0.012000000000000002 264 / 80%);
 }

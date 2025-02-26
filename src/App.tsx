@@ -6,7 +6,6 @@ import "@mantine/core/styles.css";
 /** COMPONENTS */
 import Header from "./frontend/components/Header/Header.tsx";
 import Login from "./frontend/components/Login/Login.tsx";
-import Register from "./frontend/components/Login/Register.tsx";
 import Success from "./frontend/components/Login/Success.tsx";
 import Forgot from "./frontend/components/Login/Forgot.tsx";
 import MainLayout from "./frontend/components/MainLayout.tsx";
@@ -45,7 +44,6 @@ const AppContent = () => {
           <Route path='equipment' element={<Equipment />} />
           <Route path='settings' element={<Settings />} />
         </Route>
-        <Route path='/register' element={<Register />} />
         <Route path='/success' element={<Success />} />
         <Route path='/forgot' element={<Forgot />} />
       </Routes>

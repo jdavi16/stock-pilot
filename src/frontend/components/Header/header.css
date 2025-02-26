@@ -35,24 +35,24 @@
 
 .sun-and-moon > .moon,
 .sun-and-moon > .sun {
-  fill: var(--text);
+  fill: var(--icon-fill);
 }
 
 .theme-toggle:hover > .sun-and-moon > .moon,
 .theme-toggle:focus-visible > .sun-and-moon > .moon,
 .theme-toggle:hover > .sun-and-moon > .sun,
 .theme-toggle:focus-visible > .sun-and-moon > .sun {
-  fill: var(--text-hover);
+  fill: var(--icon-fill-hover);
 }
 
 .sun-and-moon > .sun-beams {
-  stroke: var(--text);
+  stroke: var(--icon-fill);
   stroke-width: 2px;
 }
 
 .theme-toggle:hover > .sun-and-moon > .sun-beams,
 .theme-toggle:focus-visible > .sun-and-moon > .sun-beams {
-  stroke: var(--text-hover);
+  stroke: var(--icon-fill-hover);
 }
 
 [data-theme="dark"] .sun-and-moon > .sun {
@@ -80,7 +80,9 @@
   }
 
   .sun-and-moon > .sun-beams {
-    transition: transform 0.5s var(--ease-elastic-4), opacity 0.5s var(--ease-3);
+    transition:
+      transform 0.5s var(--ease-elastic-4),
+      opacity 0.5s var(--ease-3);
   }
 
   .sun-and-moon .moon > circle {
