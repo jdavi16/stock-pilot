@@ -2,6 +2,7 @@
   --accent-hover: oklch(55.66% 0.2369 277.02);
   --accent: oklch(46.09% 0.2369 277.02);
   --accent2: oklch(62.32% 0.2545 277.02);
+  --link-hover: oklch(46.66% 0.2369 277.02);
 }
 
 html[data-theme="light"] {
@@ -23,10 +24,10 @@ html[data-theme="dark"] {
   --text-hover: oklch(95% 2% 264 / 100%);
   --icon-fill: oklch(95% 2% 264 / 85%);
   --icon-fill-hover: oklch(95% 2% 264 / 100%);
-  --bg: #202020;
+  --bg: #242424;
   --button: oklch(17% 1% 264);
   --button-hover: oklch(28% 3% 264 / 65%);
-  --form: canvas;
+  --form: #2e2e2e;
   --border: 1px solid oklch(31% 3% 264 / 80%);
   --field: #333;
   --color-blue: oklch(69% 50% 264);

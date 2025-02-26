@@ -1,53 +1,47 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
-import Avatar from "@mui/material/Avatar";
-import MuiDrawer, { drawerClasses } from "@mui/material/Drawer";
-import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import MenuContent from "./MenuContent";
-//import OptionsMenu from "./OptionsMenu";
+import React, { useState } from "react";
+import { Box, Divider, Group, Stack, Title } from "@mantine/core";
+import { Link } from "react-router-dom";
+import { UserButton } from "../UserButton/UserButton";
 
-const drawerWidth = 240;
-const Drawer = styled(MuiDrawer)({
-  width: drawerWidth,
-  flexShrink: 0,
-  boxSizing: "border-box",
-  mt: 10,
-  [`& .${drawerClasses.paper}`]: {
-    width: drawerWidth,
-    boxSizing: "border-box",
-  },
-});
+import { IconDeviceIpadHorizontal, IconDashboard, IconBuildingWarehouse, IconSettings, IconLogout } from "@tabler/icons-react";
+import classes from "./Navbar.module.css";
+
+const data = [
+  { label: "Dashboard", icon: IconDashboard, link: "/dashboard" },
+  { label: "Inventory", icon: IconBuildingWarehouse, link: "/inventory" },
+  { label: "Equipment", icon: IconDeviceIpadHorizontal, link: "/equipment" },
+];
 
 export default function Navbar() {
-  const email = localStorage.getItem("email") || "";
-  const firstName = localStorage.getItem("firstName") || "";
-  const lastName = localStorage.getItem("lastName") || "";
+  const [active, setActive] = useState("Dashboard");
 
-  const capitalizeName = (name: string): string => {
-    return name.replace(/\b\w/g, (char) => char.toUpperCase());
-  };
+  const links = data.map((item) => (
+    <Link
+      className={classes.link}
+      data-active={item.label === active || undefined}
+      to={item.link}
+      key={item.label}
+      onClick={() => {
+        setActive(item.label);
+      }}>
+      <item.icon className={classes.linkIcon} stroke={1.5} />
+      <span>{item.label}</span>
+    </Link>
+  ));
 
   return (
-    <Drawer variant='permanent' sx={{ borderRight: "1px solid", display: { xs: "none", md: "block" }, [`& .${drawerClasses.paper}`]: { backgroundColor: "var(--form)", borderRight: "1px solid", borderColor: "var(--borderColor)" } }}>
-      <Box sx={{ display: "flex", mt: "40px", p: 1.5 }}></Box>
-      <Divider sx={{ backgroundColor: "var(--borderColor)", width: "100%" }} />
-      <Box sx={{ display: "flex", height: "100%", flexDirection: "column" }}>
-        <MenuContent />
-      </Box>
-      <Stack direction='row' sx={{ p: 2, gap: 1, alignItems: "center", borderTop: "1px solid", borderColor: "var(--borderColor)" }}>
-        <Avatar sizes='small' alt='Username' sx={{ width: 36, height: 36 }} />
-        <Box sx={{ mr: "0" }}>
-          <Typography variant='body2' sx={{ fontWeight: 500, lineHeight: "16px", color: "var(--text)" }}>
-            {capitalizeName(firstName)} {capitalizeName(lastName)}
-          </Typography>
-          <Typography variant='caption' sx={{ color: "var(--text)" }}>
-            {email}
-          </Typography>
-        </Box>
-      </Stack>
-    </Drawer>
+    <nav className={classes.navbar}>
+      <div className={classes.navbarMain}>
+        <Group className={classes.header} justify='space-between'>
+          <Title>Stock Pilot</Title>
+        </Group>
+
+        {links}
+      </div>
+
+      <div className={classes.footer}>
+        <UserButton />
+      </div>
+    </nav>
   );
 }

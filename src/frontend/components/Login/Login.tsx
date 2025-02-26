@@ -81,6 +81,11 @@ const Login: React.FC = () => {
       }
     }
   };
+
+  const handleToggle = () => {
+    toggle();
+    form.reset();
+  };
   return (
     <Container size={420} my={40}>
       <Title ta='center' className={classes.title} mb={20}>
@@ -88,7 +93,7 @@ const Login: React.FC = () => {
       </Title>
       <Text c='dimmed' size='sm' ta='center' mt={5}>
         {type === "register" ? "Already have an account?\t" : "Do not have an account yet?\t"}
-        <Anchor size='sm' component='button' className={classes.anchor} onClick={(e) => toggle()}>
+        <Anchor size='sm' component='button' className={classes.anchor} onClick={handleToggle}>
           {type === "register" ? "Login" : "Create Account"}
         </Anchor>
       </Text>

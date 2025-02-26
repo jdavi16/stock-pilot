@@ -1,12 +1,7 @@
 .main-layout {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 100vh;
-}
-
-.main-content {
-  display: flex;
-  flex-grow: 1;
 }
 
 .content {
@@ -15,13 +10,12 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 0; /* Ensure no padding */
   margin: 0;
   margin-top: 60px;
   padding: 20px;
   background-color: transparent;
   border: none;
-  width: calc(100vw - 240px);
+  width: calc(100vw - 300px);
   height: calc(100vh - 60px);
   /* Ensure no margin */
 }
