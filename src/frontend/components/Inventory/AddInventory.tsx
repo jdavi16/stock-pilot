@@ -1,16 +1,14 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import { IconCheck } from "@tabler/icons-react";
-import { Button, CloseButton, Grid, TextInput, NativeSelect } from "@mantine/core";
-import classes from "./inventory.module.css";
+import { Button, CloseButton, Drawer, Grid, TextInput, NativeSelect } from "@mantine/core";
+//import classes from "./inventory.module.css";
 import axios from "axios";
-
-interface AddInventoryProps {
-  toggleDrawer: (anchor: "right", open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => void;
-}
+import classes from "./Drawer.module.css";
 
 interface FormValues {
+  id?:string;
   brand: string;
   color: string;
   category: string;
@@ -34,7 +32,13 @@ interface FocusedFields {
   weight: boolean;
 }
 
-const AddInventory: React.FC<AddInventoryProps> = ({ toggleDrawer }) => {
+interface AddInventoryProps {
+  mode: "add" | "edit";
+  onClose: () => void;
+  item: FormValues | null;
+}
+
+const AddInventory: React.FC<AddInventoryProps> = ({ mode, onClose, item }) => {
   const [formValue, setFormValues] = useState<FormValues>({
     brand: "",
     color: "",
@@ -51,6 +55,12 @@ const AddInventory: React.FC<AddInventoryProps> = ({ toggleDrawer }) => {
     maxBedTemp: "",
     minBedTemp: "",
   });
+
+  useEffect(() => {
+    if (mode === "edit" && item) {
+      setFormValues(item);
+    }
+  }, [mode, item]);
 
   const [focusedFields, setFocusedFields] = useState<FocusedFields>({
     brand: false,
@@ -130,32 +140,18 @@ const AddInventory: React.FC<AddInventoryProps> = ({ toggleDrawer }) => {
     setFormValues({ ...formValue, category: category, materialType: "" });
   };
 
-  const handleSubmit = () => {
-    axios
-      .post("http://localhost:5000/api/inventory", formValue)
-      .then((response) => {
-        setFormValues({
-          brand: "",
-          color: "",
-          category: "",
-          materialType: "",
-          weight: "",
-          price: "",
-          weightUnit: "",
-          currencyUnit: "",
-          onHand: "",
-          costPer: "",
-          maxTemp: "",
-          minTemp: "",
-          maxBedTemp: "",
-          minBedTemp: "",
-        });
-        console.log("response:", response);
-      })
-      .catch((error) => {
-        console.error("There was an error adding the inventory item!", error);
-      });
-    toggleDrawer("right", false);
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    try {
+      if (mode === "add") {
+        await axios.post("http://localhost:5000/api/inventory", formValue);
+      } else {
+        await axios.put(`http://localhost:5000/api/inventory/${item?.id}`, formValue);
+      }
+      onClose();
+    } catch (error) {
+      console.error("There was an error adding the item:", error);
+    }
   };
 
   const CurrencySelect = (
@@ -208,21 +204,8 @@ const AddInventory: React.FC<AddInventoryProps> = ({ toggleDrawer }) => {
 
   return (
     <div>
-      <React.Fragment>
-        <Box
-          sx={{
-            width: 600,
-            padding: "20px",
-          }}
-          role='presentation'>
-          <Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", textColor: "var(--text)" }}>
-            <CloseButton size='xl' variant='transparent' onClick={toggleDrawer("right", false)} color='var(--text)' style={{ cursor: "pointer", marginRight: "10px" }} />
-            <h2 style={{ color: "var(--text)" }}>Add Item</h2>
-            <Button autoContrast variant='filled' color='var(--accent)' size='md' radius='md' leftSection={<IconCheck />} style={{ marginLeft: "auto" }} type='submit' onClick={handleSubmit}>
-              Confirm
-            </Button>
-          </Box>
-          <Divider sx={{ backgroundColor: "var(--borderColor)", width: "100%", marginTop: "10px" }} />
+      <form onSubmit={handleSubmit}>
+        <React.Fragment>
           <div className='form-section'>
             <h3>General Information</h3>
             <Grid gutter='lg'>
@@ -251,7 +234,7 @@ const AddInventory: React.FC<AddInventoryProps> = ({ toggleDrawer }) => {
               </Grid.Col>
             </Grid>
           </div>
-          <Divider sx={{ backgroundColor: "var(--borderColor)", width: "100%", marginTop: "10px" }} />
+          <Divider sx={{ backgroundColor: "var(--borderColor)", width: "100%" }} />
           <div className='form-section'>
             <h3>Weight Information</h3>
             <Grid gutter='xs'>
@@ -297,8 +280,8 @@ const AddInventory: React.FC<AddInventoryProps> = ({ toggleDrawer }) => {
               </Grid.Col>
             </Grid>
           </div>
-        </Box>
-      </React.Fragment>
+        </React.Fragment>
+      </form>
     </div>
   );
 };

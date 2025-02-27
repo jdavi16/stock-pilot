@@ -1,64 +1,58 @@
-import React, { useState, MouseEvent, KeyboardEvent } from "react";
-import AddInventory from "./AddInventory";
-import Drawer from "@mui/material/Drawer";
-import InputAdornment from "@mui/material/InputAdornment";
-import { IconPlus, IconSearch } from "@tabler/icons-react";
-import { Button, TextInput } from "@mantine/core";
+import React, { useState } from "react";
+import { useDisclosure } from "@mantine/hooks";
+import { IconPlus } from "@tabler/icons-react";
+import { Button } from "@mantine/core";
 import { InventoryTable } from "./InventoryTable";
+import InventoryDrawer from "./InventoryDrawer";
 
-interface DrawerState {
-  right: boolean;
+interface InventoryItem {
+  brand: string;
+  color: string;
+  category: string;
+  materialType: string;
+  weight: string;
+  price: string;
+  weightUnit: string;
+  currencyUnit: string;
+  onHand: string;
+  costPer: string;
+  maxTemp: string;
+  minTemp: string;
+  maxBedTemp: string;
+  minBedTemp: string;
 }
 
 const Inventory: React.FC = () => {
-  const [state, setState] = useState<DrawerState>({
-    right: false,
-  });
+  const [opened, { open, close }] = useDisclosure(false);
+  const [drawerMode, setDrawerMode] = useState<"add" | "edit">("add");
+  const [currentItem, setCurrentItem] = useState<InventoryItem | null>(null);
 
-  const toggleDrawer = (anchor: keyof DrawerState, open: boolean) => (event: MouseEvent | KeyboardEvent) => {
-    if (event.type === "keydown" && ((event as KeyboardEvent).key === "Tab" || (event as KeyboardEvent).key === "Shift")) {
-      return;
-    }
+  const handleAddClick = () => {
+    setDrawerMode("add");
+    setCurrentItem(null);
+    open();
+  };
 
-    setState({ ...state, [anchor]: open });
+  const handleEditClick = (item: InventoryItem) => {
+    setDrawerMode("edit");
+    setCurrentItem(item);
+    open();
   };
 
   return (
     <div className='inventory-container'>
-      <Drawer
-        anchor='right'
-        open={state.right}
-        onClose={toggleDrawer("right", false)}
-        ModalProps={{
-          BackdropProps: {
-            onClick: (event) => event.stopPropagation(),
-          },
-        }}
-        sx={{ [`& .MuiDrawer-paper`]: { width: 600, backgroundColor: "var(--form)", borderLeft: "1px solid", borderColor: "var(--borderColor)" } }}>
-        <AddInventory toggleDrawer={toggleDrawer} />
-      </Drawer>
+      <InventoryDrawer opened={opened} onClose={close} mode={drawerMode} item={currentItem} />
       <div className='inventory-header-container'>
         <div className='inventory-header-left'>
           <h1>Inventory</h1>
-          <Button variant='filled' leftSection={<IconPlus />} color='var(--accent)' onClick={toggleDrawer("right", true)}>
+          <Button variant='filled' leftSection={<IconPlus />} color='var(--accent)' onClick={handleAddClick}>
             Add Item
           </Button>
         </div>
-        <div className='inventory-search-container'>
-          <TextInput type='text' placeholder='Search Inventory' />
-        </div>
-      </div>
-      <div className='inventory-filters'>
-        <Button variant='filled' color='var(--accent)'>
-          Filter 1
-        </Button>
-        <Button variant='filled' color='var(--accent)'>
-          Filter 2
-        </Button>
       </div>
       <div className='inventory-table'>
         <div className='inventory-item'>
-          <InventoryTable />
+          <InventoryTable onEditClick={handleEditClick} />
         </div>
       </div>
     </div>

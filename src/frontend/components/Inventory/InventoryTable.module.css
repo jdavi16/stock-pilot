@@ -1,0 +1,37 @@
+.th {
+  padding: 0;
+  white-space: nowrap;
+}
+
+.control {
+  width: 100%;
+  padding: 0.625rem 0.625rem;
+  display: flex;
+
+  &:hover {
+    background-color: var(--bg);
+  }
+}
+
+.icon {
+  width: 21px;
+  height: 21px;
+  border-radius: 21px;
+  color: var(--text);
+}
+
+.tr {
+  border-bottom: 1px solid var(--borderColor);
+}
+
+.search {
+  background-color: var(--bg);
+  border: 1px solid var(--borderColor);
+  color: var(--text);
+  &:hover {
+    border-color: var(--accent2);
+  }
+  &:focus {
+    border-color: var(--accent);
+  }
+}

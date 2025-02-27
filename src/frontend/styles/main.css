@@ -2,14 +2,15 @@
 @import "../components/Login/login.module.css";
 @import "../components/Header/header.css";
 @import "../components/Inventory/inventory.css";
-@import "../components/Inventory/drawer.css";
+@import "../components/Inventory/Drawer.module.css";
 @import "../components/Dashboard/dashboard.module.css";
 @import "../components/Login/success.module.css";
 
+@import "../components/Inventory/InventoryTable.module.css";
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: var(--mantine-font-family);
+  font-family: var(--font-family);
 }
 
 html {

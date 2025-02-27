@@ -1,39 +1,44 @@
 import React, { useEffect, useState, ChangeEvent } from "react";
 import { IconChevronDown, IconChevronUp, IconSearch, IconSelector, IconPencil, IconTrash } from "@tabler/icons-react";
-import { Center, Group, ScrollArea, Table, Text, TextInput, UnstyledButton, Button } from "@mantine/core";
-import classes from "./inventory.module.css";
+import { Center, Group, keys, ScrollArea, Table, Text, TextInput, UnstyledButton, Button, Divider } from "@mantine/core";
+import classes from "./InventoryTable.module.css";
 import axios from "axios";
 
-interface InventoryItem {
+interface InventoryData {
   brand: string;
   color: string;
   category: string;
   materialType: string;
   weight: string;
   price: string;
+  weightUnit: string;
+  currencyUnit: string;
   onHand: string;
+  costPer: string;
+  maxTemp: string;
+  minTemp: string;
+  maxBedTemp: string;
+  minBedTemp: string;
   id: string; // Ensure each item has a unique id
 }
 
 interface ThProps {
   children: React.ReactNode;
-  reverseSortDirection: boolean;
+  reversed: boolean;
   sorted: boolean;
   onSort: () => void;
 }
 
-interface SortPayload {
-  sortBy: keyof InventoryItem | null;
-  reversed: boolean;
-  search: string;
+interface InventoryTableProps {
+  onEditClick: (item: InventoryData) => void;
 }
 
-function Th({ children, reverseSortDirection, sorted, onSort }: ThProps) {
-  const Icon = sorted ? (reverseSortDirection ? IconChevronUp : IconChevronDown) : IconSelector;
+function Th({ children, reversed, sorted, onSort }: ThProps) {
+  const Icon = sorted ? (reversed ? IconChevronUp : IconChevronDown) : IconSelector;
   return (
     <Table.Th className={classes.th}>
       <UnstyledButton onClick={onSort} className={classes.control}>
-        <Group justify='spacebetween'>
+        <Group justify='space-between'>
           <Text fw={500} fz='sm'>
             {children}
           </Text>
@@ -46,12 +51,12 @@ function Th({ children, reverseSortDirection, sorted, onSort }: ThProps) {
   );
 }
 
-function filterData(data: InventoryItem[], search: string): InventoryItem[] {
+function filterData(data: InventoryData[], search: string) {
   const query = search.toLowerCase().trim();
-  return data.filter((item) => Object.keys(data[0]).some((key) => item[key as keyof InventoryItem].toLowerCase().includes(query)));
+  return data.filter((item) => keys(data[0]).some((key) => item[key].toLowerCase().includes(query)));
 }
 
-function sortData(data: InventoryItem[], payload: SortPayload): InventoryItem[] {
+function sortData(data: InventoryData[], payload: { sortBy: keyof InventoryData | null; reversed: boolean; search: string }) {
   const { sortBy } = payload;
 
   if (!sortBy) {
@@ -69,11 +74,11 @@ function sortData(data: InventoryItem[], payload: SortPayload): InventoryItem[] 
   );
 }
 
-export const InventoryTable: React.FC = () => {
+export const InventoryTable: React.FC<InventoryTableProps> = ({ onEditClick }) => {
   const [search, setSearch] = useState<string>("");
-  const [data, setData] = useState<InventoryItem[]>([]);
-  const [sortedData, setSortedData] = useState<InventoryItem[]>([]);
-  const [sortBy, setSortBy] = useState<keyof InventoryItem | null>(null);
+  const [data, setData] = useState<InventoryData[]>([]);
+  const [sortedData, setSortedData] = useState<InventoryData[]>([]);
+  const [sortBy, setSortBy] = useState<keyof InventoryData | null>(null);
   const [reverseSortDirection, setReverseSortDirection] = useState<boolean>(false);
 
   useEffect(() => {
@@ -88,7 +93,7 @@ export const InventoryTable: React.FC = () => {
       });
   }, []);
 
-  const setSorting = (field: keyof InventoryItem) => {
+  const setSorting = (field: keyof InventoryData) => {
     const reversed = field === sortBy ? !reverseSortDirection : false;
     setReverseSortDirection(reversed);
     setSortBy(field);
@@ -119,14 +124,11 @@ export const InventoryTable: React.FC = () => {
       <Table.Td>
         {row.brand} {row.color} {row.materialType}
       </Table.Td>
-      <Table.Td>{row.brand}</Table.Td>
-      <Table.Td>{row.color}</Table.Td>
       <Table.Td>{row.category}</Table.Td>
-      <Table.Td>{row.materialType}</Table.Td>
       <Table.Td>{row.weight}</Table.Td>
       <Table.Td>{row.price}</Table.Td>
       <Table.Td>{row.onHand}</Table.Td>
-      <Button variant='filled' color='var(--accent)' size='xs' style={{ marginRight: "5px", marginTop: "5px" }}>
+      <Button variant='filled' color='var(--accent)' size='xs' style={{ marginRight: "5px", marginTop: "5px" }} onClick={() => onEditClick(row)}>
         {<IconPencil />}
       </Button>
       <Button variant='filled' size='xs' color='var(--accent)' style={{ marginLeft: "5px", marginTop: "5px" }} onClick={() => handleDelete(row.id)}>
@@ -144,33 +146,27 @@ export const InventoryTable: React.FC = () => {
   }
 
   return (
-    <ScrollArea>
-      <TextInput placeholder='Search by any field' mb='md' leftSection={<IconSearch size={16} stroke={1.5} />} value={search} onChange={handleSearchChange} />
-      <Table horizontalSpacing='md' verticalSpacing='xs' miw={700} layout='fixed'>
+    <ScrollArea className={classes.scrollArea}>
+      <TextInput classNames={{ input: classes.search }} placeholder='Search by any field' mb='md' leftSection={<IconSearch size={16} stroke={1.5} />} value={search} onChange={handleSearchChange} />
+      <Divider color='var(--borderColor)' mt={20} mb={20} />
+      <Table horizontalSpacing='sm' verticalSpacing='sm' miw={700} layout='fixed'>
         <Table.Tbody>
           <Table.Tr>
-            <Th sorted={sortBy === "brand"} reverseSortDirection={reverseSortDirection} onSort={() => setSorting("brand")}>
+            <Th sorted={sortBy === "brand"} reversed={reverseSortDirection} onSort={() => setSorting("brand")}>
               Item Name
             </Th>
-            <Th sorted={sortBy === "brand"} reverseSortDirection={reverseSortDirection} onSort={() => setSorting("brand")}>
-              Brand
-            </Th>
-            <Th sorted={sortBy === "color"} reverseSortDirection={reverseSortDirection} onSort={() => setSorting("color")}>
-              Color
-            </Th>
-            <Th sorted={sortBy === "category"} reverseSortDirection={reverseSortDirection} onSort={() => setSorting("category")}>
+
+            <Th sorted={sortBy === "category"} reversed={reverseSortDirection} onSort={() => setSorting("category")}>
               Category
             </Th>
-            <Th sorted={sortBy === "materialType"} reverseSortDirection={reverseSortDirection} onSort={() => setSorting("materialType")}>
-              Material Type
-            </Th>
-            <Th sorted={sortBy === "weight"} reverseSortDirection={reverseSortDirection} onSort={() => setSorting("weight")}>
+
+            <Th sorted={sortBy === "weight"} reversed={reverseSortDirection} onSort={() => setSorting("weight")}>
               Weight
             </Th>
-            <Th sorted={sortBy === "price"} reverseSortDirection={reverseSortDirection} onSort={() => setSorting("price")}>
+            <Th sorted={sortBy === "price"} reversed={reverseSortDirection} onSort={() => setSorting("price")}>
               Price
             </Th>
-            <Th sorted={sortBy === "onHand"} reverseSortDirection={reverseSortDirection} onSort={() => setSorting("onHand")}>
+            <Th sorted={sortBy === "onHand"} reversed={reverseSortDirection} onSort={() => setSorting("onHand")}>
               On Hand
             </Th>
           </Table.Tr>

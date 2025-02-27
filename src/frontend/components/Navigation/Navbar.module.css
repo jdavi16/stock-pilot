@@ -1,7 +1,7 @@
 .navbar {
   height: 100%;
   width: 300px;
-  padding: var(--mantine-spacing-md);
+  padding: var(--spacing-md);
   display: flex;
   flex-direction: column;
   background-color: var(--form);
@@ -14,14 +14,14 @@
 }
 
 .header {
-  padding-bottom: var(--mantine-spacing-md);
-  margin-bottom: calc(var(--mantine-spacing-md) * 1.5);
+  padding-bottom: var(--spacing-md);
+  margin-bottom: calc(var(--spacing-md) * 1.5);
   border-bottom: 1px solid var(--borderColor);
 }
 
 .footer {
-  padding-top: var(--mantine-spacing-md);
-  margin-top: var(--mantine-spacing-md);
+  padding-top: var(--spacing-md);
+  margin-top: var(--spacing-md);
   border-top: 1px solid var(--borderColor);
 }
 
@@ -29,20 +29,18 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-size: var(--mantine-font-size-sm);
+  font-size: var(--font-size-sm);
   color: var(--text);
-  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+  padding: var(--spacing-xs) var(--mantine-spacing-sm);
   border-radius: var(--mantine-radius-sm);
   font-weight: 500;
   &:hover {
-    background-color: var(--bg);
+    background-color: var(--link-hover);
   }
   &[data-active] {
     &,
     &:hover {
-      background-color: var(--link-hover);
-      
-      ;
+      background-color: var(--link-active);
 
       .linkIcon {
         color: var(--text);
@@ -58,9 +56,6 @@
   height: 25px;
 }
 
-
-
 .settingsGroup {
   margin-top: auto;
-  
 }
