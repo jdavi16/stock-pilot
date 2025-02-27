@@ -36,8 +36,8 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-  --text: #ffffff;
-  --text-hover: oklch(95% 2% 264 / 100%);
+  --text: #ced4da;
+  --text-hover: #ffffff;
   --icon-fill: oklch(95% 2% 264 / 85%);
   --icon-fill-hover: oklch(95% 2% 264 / 100%);
   --bg: canvas;

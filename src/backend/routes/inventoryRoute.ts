@@ -31,7 +31,7 @@ router.get("/inventory", async (req, res) => {
 //DELETE /api/inventory/:id
 router.delete("/inventory/:id", async (req: Request, res: Response) => {
   try {
-    const inventory = await Inventory.findById(req.params.id);
+    const inventory = await Inventory.findByIdAndDelete(req.params.id);
     if (!inventory) {
       res.status(404).json({ message: "Inventory not found" });
       return;

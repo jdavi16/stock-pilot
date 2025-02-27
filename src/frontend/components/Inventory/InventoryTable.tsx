@@ -107,6 +107,7 @@ export const InventoryTable: React.FC<InventoryTableProps> = ({ onEditClick }) =
   };
 
   const handleDelete = (id: string) => {
+    console.log("Deleting item with id:", id);
     axios
       .delete(`http://localhost:5000/api/inventory/${id}`)
       .then(() => {
@@ -131,7 +132,7 @@ export const InventoryTable: React.FC<InventoryTableProps> = ({ onEditClick }) =
       <Button variant='filled' color='var(--accent)' size='xs' style={{ marginRight: "5px", marginTop: "5px" }} onClick={() => onEditClick(row)}>
         {<IconPencil />}
       </Button>
-      <Button variant='filled' size='xs' color='var(--accent)' style={{ marginLeft: "5px", marginTop: "5px" }} onClick={() => handleDelete(row.id)}>
+      <Button variant='filled' size='xs' color='var(--accent)' style={{ marginLeft: "5px", marginTop: "5px" }} onClick={() => handleDelete(row)}>
         {<IconTrash />}
       </Button>
     </Table.Tr>

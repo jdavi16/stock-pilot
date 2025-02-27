@@ -15,3 +15,4 @@ src/
 ├── index.css
 ├── index.js
 
+\"wait-on http://localhost:3000 && cross-env DEV= tsc-watch -p tsconfig-electron.json --onSuccess \\\"electron .\\\"\"",

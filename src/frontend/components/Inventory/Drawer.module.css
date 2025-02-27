@@ -10,36 +10,51 @@
 .drawerHeader {
   background-color: var(--form);
   display: row;
-  justify-content: space-between; /* Ensure space between title and confirm button */
-  align-items: center; /* Center items vertically */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .drawerTitle {
   color: var(--text);
   font-size: 25px;
-  margin-left: auto; 
-
+  margin-left: auto;
 }
 
-.drawer-field {
-  flex: 1;
-  margin-right: 10px;
-}
-
-.drawer-field:last-child {
-  margin-right: 0;
-}
-
-.drawer-input::placeholder {
-  color: var(--text);
-}
-
-.form-section {
+h3 {
+  margin-top: 10px;
   margin-bottom: 20px;
-  margin-top: 20px;
+  font-size: 18px;
 }
 
-.form-section h3 {
-  margin-bottom: 10px;
+.grid {
+  width: 100%;
+}
+
+.gridColumn {
+  display: grid;
+  gap: 20px;
+}
+
+.input {
+  background-color: var(--bg);
+  border-color: var(--borderColor);
   color: var(--text);
+  &:hover {
+    border-color: var(--accent2);
+  }
+  &:focus-within {
+    border-color: var(--accent);
+  }
+}
+
+.smallSelect {
+  font-weight: 500;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  width: 92;
+  border: "none";
+  margin-right: "1px";
+  background-color: "var(--form)";
+  color: "var(--text)";
+  border-left: "1px solid var(--borderColor)";
 }

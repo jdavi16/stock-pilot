@@ -8,7 +8,7 @@ import axios from "axios";
 import classes from "./Drawer.module.css";
 
 interface FormValues {
-  id?:string;
+  id?: string;
   brand: string;
   color: string;
   category: string;
