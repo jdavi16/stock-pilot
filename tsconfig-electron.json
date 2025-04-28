@@ -2,8 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "CommonJS",
-    "outDir": "dist",
-    "noEmit": true
+    "outDir": "./dist"
   },
-  "include": ["src/electron"]
+  "include": ["./src/electron/*"]
 }

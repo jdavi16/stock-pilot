@@ -132,7 +132,7 @@ export const InventoryTable: React.FC<InventoryTableProps> = ({ onEditClick }) =
       <Button variant='filled' color='var(--accent)' size='xs' style={{ marginRight: "5px", marginTop: "5px" }} onClick={() => onEditClick(row)}>
         {<IconPencil />}
       </Button>
-      <Button variant='filled' size='xs' color='var(--accent)' style={{ marginLeft: "5px", marginTop: "5px" }} onClick={() => handleDelete(row)}>
+      <Button variant='filled' size='xs' color='var(--accent)' style={{ marginLeft: "5px", marginTop: "5px" }} onClick={() => handleDelete(row.id)}>
         {<IconTrash />}
       </Button>
     </Table.Tr>

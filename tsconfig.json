@@ -13,12 +13,11 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+
     "jsx": "react-jsx",
     "types": ["vite/client"],
-    "outDir": "./dist",
-    "allowImportingTsExtensions": true
+    "outDir": "./dist"
   },
-  "include": ["src/**/*", "electron/**/*"],
+  "include": ["electron/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

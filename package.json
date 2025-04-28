@@ -41,11 +41,14 @@
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "build": "vite build && tsc -p tsconfig-electron.json && cross-env PREVIEW= electron.",
+    "start": "vite",
+    "electron-dev": "cross-env NODE_ENV=development electron .",
+    "build": "vite build && tsc -p tsconfig-electron.json",
     "postcss": "postcss ./src/frontend/styles/main.css -o dist/main.css --watch",
-    "express": "ts-node ./src/backend/server.ts",
-    "dev": "concurrently \"tsc && vite\" \"yarn express \" \"yarn postcss\"",
+    "express": "cross-env NODE_ENV=development ts-node ./src/backend/server.ts",
+    "dev": "concurrently \"cross-env NODE_ENV=development yarn start\" \"yarn express\" \"yarn postcss\" \"wait-on tcp:5173 && yarn electron-dev\"",
     "preview": "vite preview"
+
   },
   "eslintConfig": {
     "extends": [
@@ -97,7 +100,7 @@
     "typescript-eslint": "^8.24.1",
     "wait-on": "^8.0.2"
   },
-  "main": "dist/main.js",
+  "main": "./dist/main.js",
   "repository": "https://github.com/jdavi16/stock-pilot.git",
   "author": "jdavi16 <jdavi16@yahoo.com>",
   "license": "MIT"

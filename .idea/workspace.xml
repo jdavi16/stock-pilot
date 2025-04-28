@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ff8eed6a-2b60-411c-aa6f-03c033c4bf44" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.hintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.hintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/path.txt" beforeDir="false" afterPath="$PROJECT_DIR$/path.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcss.config.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/postcss.config.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backend/models/Inventory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/models/Inventory.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backend/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/models/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backend/routes/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/routes/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backend/routes/inventoryRoute.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/routes/inventoryRoute.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backend/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/electron/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/electron/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/electron/globals.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/electron/globals.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/electron/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/electron/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/electron/preload.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/electron/preload.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Dashboard/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Dashboard/dashboard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Dashboard/dashboard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Equipment/Equipment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Equipment/Equipment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Header/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Inventory/AddInventory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Inventory/AddInventory.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Inventory/Drawer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Inventory/Drawer.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Inventory/Inventory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Inventory/Inventory.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Inventory/InventoryDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Inventory/InventoryDrawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Inventory/InventoryTable.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Inventory/InventoryTable.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Inventory/InventoryTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Inventory/InventoryTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Inventory/inventory.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Inventory/inventory.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Inventory/inventory.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Inventory/inventory.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Login/Forgot.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Login/Forgot.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Login/Success.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Login/Success.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Login/login.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Login/login.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Login/success.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Login/success.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/MainLayout.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/MainLayout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/MainLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/MainLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Navigation/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Navigation/Navbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Navigation/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Navigation/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/Settings/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/Settings/Settings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/UserButton/UserButton.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/UserButton/UserButton.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/components/UserButton/UserButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/components/UserButton/UserButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/scripts/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/scripts/AuthContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/styles/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/styles/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/styles/variables.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vite-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/vite-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig-electron.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig-electron.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.node.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.node.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2wN0jmKFN71mqsZCeP1lLvJ3yXe" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "E:\\Personal\\Programming\\stock-pilot\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-WS-251.23774.424" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ff8eed6a-2b60-411c-aa6f-03c033c4bf44" name="Changes" comment="" />
+      <created>1745866861989</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745866861989</updated>
+      <workItem from="1745866863721" duration="1867000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
